@@ -1,0 +1,42 @@
+{
+    "Business Analyst": {
+        "Negative_Score": 0.0017,
+        "Positive_Score": 0.9324,
+        "Neutral_Score": 0.0659
+    },
+    "Business Intelligence Developer": {
+        "Negative_Score": 0.0,
+        "Positive_Score": 0.9927,
+        "Neutral_Score": 0.0073
+    },
+    "Data Analyst": {
+        "Negative_Score": 0.0,
+        "Positive_Score": 0.9942,
+        "Neutral_Score": 0.0058
+    },
+    "Data Engineer": {
+        "Negative_Score": 0.0014,
+        "Positive_Score": 0.9019,
+        "Neutral_Score": 0.0967
+    },
+    "Data Scientist": {
+        "Negative_Score": 0.0,
+        "Positive_Score": 0.9679,
+        "Neutral_Score": 0.0321
+    },
+    "Database Administrator": {
+        "Negative_Score": 0.0,
+        "Positive_Score": 0.9734,
+        "Neutral_Score": 0.0266
+    },
+    "Machine Learning Engineer": {
+        "Negative_Score": 0.0,
+        "Positive_Score": 0.9875,
+        "Neutral_Score": 0.0125
+    },
+    "Others": {
+        "Negative_Score": 0.0,
+        "Positive_Score": 0.9274,
+        "Neutral_Score": 0.0726
+    }
+}
