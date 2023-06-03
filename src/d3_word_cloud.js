@@ -75,7 +75,7 @@ function generateCloud(myWords, containerId) {
             .style("font-size", function (d) {
                 return d.size;
             })
-            .style("fill", "#69b3a2")
+            .style("fill", "#45BFBF")
             .attr("text-anchor", "middle")
             .style("font-family", "Impact")
             .attr("transform", function (d) {
