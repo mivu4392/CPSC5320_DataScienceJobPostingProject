@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Word Clouds</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="d3_word_cloud_layout.js"></script>
+    <style>
+        .button {
+            background-color: #4CAF50;
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        h2 {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-style: italic;
+            margin-left: 90px;
+        }
+
+        label {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        select {
+            text-align: center;
+            width: 250px;
+            height: 30px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            font-size: 16px;
+            color: #333;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            margin: auto;
+        }
+
+        option {
+            font-size: 16px;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        select:after {
+            content: "\25BC";
+            font-size: 16px;
+            color: #333;
+            position: absolute;
+            top: 9px;
+            right: 10px;
+            z-index: 1;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        #left, #right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .highlight {
+        background-color: yellow;
+    }
+
+    </style>
+</head>
+<body onload="loadDefaultCloud()">
+    <a href="index.html" class="button">Back to Home page</a>
+    <h2>Word Clouds</h2>
+    <div class="container">
+        <div id="left">
+            <label>Job Title</label>
+            <select onchange="onLeftSelectionChange(this.value)">
+                <option value="Business Analyst">Business Analyst</option>
+                <option value="Business Intelligence Developer">Business Intelligence Developer</option>
+                <option value="Data Analyst">Data Analyst</option>
+                <option value="Data Engineer">Data Engineer</option>
+                <option value="Data Scientist">Data Scientist</option>
+                <option value="Database Administrator">Database Administrator</option>
+                <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+            </select>
+            <div id="left_cloud"></div>
+        </div>
+        <div id="right">
+            <label>Job Title</label>
+            <select onchange="onRightSelectionChange(this.value)">
+                <option value="Business Analyst">Business Analyst</option>
+                <option value="Business Intelligence Developer">Business Intelligence Developer</option>
+                <option value="Data Analyst">Data Analyst</option>
+                <option value="Data Engineer">Data Engineer</option>
+                <option value="Data Scientist">Data Scientist</option>
+                <option value="Database Administrator">Database Administrator</option>
+                <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+            </select>
+            <div id="right_cloud"></div>
+        </div>
+    </div>
+    <script src="d3_word_cloud.js"></script>
+</body>
+</html>
