@@ -12,38 +12,6 @@ const color5 = "#FFDAB9";
 const color6 = "#f2555d";
 const color7 = "#D2B48C";
 
-// // Define an object to store the tooltip data
-// var tooltipData = {
-//   "Business Analyst": {
-//     minSalary: 36400,
-//     maxSalary: 208000
-//   },
-//   "Business Intelligence Developer": {
-//     minSalary: 57200,
-//     maxSalary: 151840
-//   },
-//   "Data Analyst": {
-//     minSalary: 33280,
-//     maxSalary: 162240
-//   },
-//   "Data Engineer": {
-//     minSalary: 41600,
-//     maxSalary: 187200
-//   },
-//   "Data Scientist": {
-//     minSalary: 36400,
-//     maxSalary: 215010
-//   },
-//   "Database Administrator": {
-//     minSalary: 50211,
-//     maxSalary: 165360
-//   },
-//   "Machine Learning Engineer": {
-//     minSalary: 52000,
-//     maxSalary: 194106
-//   }
-// };
-
 // Define an object to store the tooltip data
 var tooltipData = {
   "All": {
@@ -157,11 +125,13 @@ var legendsSvg = d3
   .attr("transform", "translate(10," + margin.top + ")"); // Adjust the left margin as needed
 
 // Create a tooltip
-var tooltip = d3
-  .select("body")
+var tooltip = d3.select("body")
   .append("div")
+  .style("position", "absolute")
+  .style("z-index", "100")
+  .style("opacity", 0)
   .attr("class", "tooltip")
-  .style("opacity", 0);
+  .style("font-size", "16px")
 
 // Function to update the violin plots
 function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
@@ -195,13 +165,13 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
       .scaleBand()
       .range([0, width])
       .domain([
-        "Data Analyst",
-        "Data Scientist",
         "Business Analyst",
         "Business Intelligence Developer",
+        "Data Analyst",
+        "Data Scientist",
         "Data Engineer",
         "Database Administrator",
-        "Machine Learning Engineer",
+        "Machine Learning Engineer"
       ])
       .padding(0.2);
 
@@ -301,32 +271,41 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
         } else if (selectedFile === "../data/inperson.csv") {
           selectedKey = Object.keys(tooltipData)[2]; // Third key
         }
-    
+
         var jobTitle = d3.select(this.parentNode).datum().key;
         var jobData = tooltipData[selectedKey][jobTitle];
         var tooltipHTML = "<strong>" + jobTitle + "</strong><br>" +
-          "Min Salary: $" + jobData.minSalary + "<br>" +
-          "Max Salary: $" + jobData.maxSalary;
-    
+          "<table>" + 
+          "<tr>" + "<td>Min Salary:</td>" + "<td style=\"text-align: right;\">$" + jobData.minSalary + "</td>" + "</tr>" +
+          "<tr>" + "<td>Max Salary:</td>" + "<td style=\"text-align: right;\">$" + jobData.maxSalary + "</td>" + "</tr>" +
+          "</table>";
         tooltip
           .html(tooltipHTML)
-          .style("left", (event.pageX + 10) + "px")
-          .style("top", (event.pageY - 10) + "px")
-          .style("opacity", 0.9);
+          .transition()
+          .style("opacity", 0.9)
+          .style("left", d3.event.pageX + "px")
+          .style("top", d3.event.pageY + "px");
+      })
+      .on("mousemove", function (event) {
+        tooltip
+          .style("left", d3.event.pageX + "px")
+          .style("top", d3.event.pageY + "px");
       })
       .on("mouseout", function () {
         tooltip.style("opacity", 0);
       });
 
+
+
     // Add legends
     var legendLabels = [
-      "Data Analyst",
-      "Data Scientist",
       "Business Analyst",
       "Business Intelligence Developer",
+      "Data Analyst",
+      "Data Scientist",
       "Data Engineer",
       "Database Administrator",
-      "Machine Learning Engineer",
+      "Machine Learning Engineer"
     ];
     var legendColors = [color1, color2, color3, color4, color5, color6, color7];
 

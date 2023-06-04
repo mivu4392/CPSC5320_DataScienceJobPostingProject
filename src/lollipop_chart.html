@@ -1,65 +1,67 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="utf-8">
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
-<!-- Tooltip style -->
-<style>
-  .tooltip {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 15px;
-    min-width: 400px;
-    text-align: left;
-    color: black;
-  }
-  .button {
-    background-color: #4CAF50;
-  }
+  <!-- Load d3.js -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+  <!-- Tooltip style -->
+  <style>
+    .tooltip {
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 5px;
+      padding: 15px;
+      min-width: 400px;
+      text-align: left;
+      color: black;
+    }
 
-  .button {
-    background-color: #4CAF50;
-    /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  }
+    .button {
+      background-color: #4CAF50;
+    }
 
-  h2 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: medium;
-  }
+    .button {
+      background-color: #4CAF50;
+      /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
 
-  h1 {
-    margin-left: 300px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-style: italic;
-  }
+    h2 {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: medium;
+    }
 
-  p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .btn {
-    color: orange;
-  }
-  
-  .btn.active {
-    /* Add your desired styles for the active button */
-    font-weight: bolder;
-    /* Example: Change background color to yellow */
-    background-color: white;
-  }
+    h1 {
+      margin-left: 300px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-style: italic;
+    }
 
+    p {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .btn {
+      color: orange;
+    }
+
+    .btn.active {
+      /* Add your desired styles for the active button */
+      font-weight: bolder;
+      /* Example: Change background color to yellow */
+      background-color: white;
+    }
   </style>
 </head>
+
 <body>
   <br>
   <a href="index.html" class="button">Back to Home page</a>
@@ -67,297 +69,310 @@
   <br>
   <center>
 
-  <h1 style="text-align: center;">Relative frequency of skillsets for different jobs. </h1>
-<h3>Select a Job Title: 
-  <button id="businessAnalystBtn" class="btn" style="color:#9370DB;" onclick="update('businessAnalystBtn','data/skillset_ba.csv','Business Analyst','#9370DB')"active>Business Analyst</button> 
-  <button id="biDevBtn" class="btn" style="color:#FFB6C1;" onclick="update('biDevBtn','data/skillset_bid.csv','Business Intelligence Developer','#FFB6C1')">Business Intelligence Developer</button>
-  <button id="dataAnalystBtn" class="btn" style="color: #87CEEB;" onclick="update('dataAnalystBtn','data/skillset_da.csv','Data Analyst','#87CEEB')">Data Analyst</button>  
-  <button id="dataEngineerBtn" class="btn" style="color:#FFDAB9;" onclick="update('dataEngineerBtn','data/skillset_de.csv','Data Engineer','#FFDAB9')">Data Engineer</button>
-  <button id="dataScientistBtn" class="btn" style="color:#90EE90;" onclick="update('dataScientistBtn','data/skillset_ds.csv','Data Scientist','90EE90')">Data Scientist</button>
-<button id="dbAdminBtn" class="btn" style="color: #f2555d;" onclick="update('dbAdminBtn','data/skillset_dba.csv','Database Administrator','#f2555d')">Database Administrator</button>
-<button id="mlEngineerBtn" class="btn" style="color: #D2B48C;" onclick="update('mlEngineerBtn','data/skillset_mle.csv','Machine Learning Engineer','#D2B48C')">Machine Learning Engineer</button>
+    <h1 style="text-align: center;">Relative frequency of skillsets for different jobs. </h1>
+    <h3>Select a Job Title:
+      <button id="businessAnalystBtn" class="btn" style="color:#9370DB;"
+        onclick="update('businessAnalystBtn','data/skillset_ba.csv','Business Analyst','#9370DB')" active>Business
+        Analyst</button>
+      <button id="biDevBtn" class="btn" style="color:#FFB6C1;"
+        onclick="update('biDevBtn','data/skillset_bid.csv','Business Intelligence Developer','#FFB6C1')">Business
+        Intelligence Developer</button>
+      <button id="dataAnalystBtn" class="btn" style="color: #87CEEB;"
+        onclick="update('dataAnalystBtn','data/skillset_da.csv','Data Analyst','#87CEEB')">Data Analyst</button>
+      <button id="dataEngineerBtn" class="btn" style="color:#FFDAB9;"
+        onclick="update('dataEngineerBtn','data/skillset_de.csv','Data Engineer','#FFDAB9')">Data Engineer</button>
+      <button id="dataScientistBtn" class="btn" style="color:#90EE90;"
+        onclick="update('dataScientistBtn','data/skillset_ds.csv','Data Scientist','90EE90')">Data Scientist</button>
+      <button id="dbAdminBtn" class="btn" style="color: #f2555d;"
+        onclick="update('dbAdminBtn','data/skillset_dba.csv','Database Administrator','#f2555d')">Database
+        Administrator</button>
+      <button id="mlEngineerBtn" class="btn" style="color: #D2B48C;"
+        onclick="update('mlEngineerBtn','data/skillset_mle.csv','Machine Learning Engineer','#D2B48C')">Machine Learning
+        Engineer</button>
 
-<br/><br/></br>
+      <br /><br /></br>
 
-<div id="my_dataviz"></div>
+      <div id="my_dataviz"></div>
 
-</center>
+  </center>
 
 
-<script>
-// set the dimensions and margins of the graph
-var margin = {top: 50, right: 10, bottom: 110, left: 270},
-    width = 760 - margin.left - margin.right,
-    height = 660 - margin.top - margin.bottom;
+  <script>
+    // set the dimensions and margins of the graph
+    var margin = { top: 50, right: 10, bottom: 110, left: 270 },
+      width = 760 - margin.left - margin.right,
+      height = 660 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
 
-// Parse the Data
-d3.csv("data/skillset_ba.csv", function(data) {
+    // Parse the Data
+    d3.csv("../data/skillset_ba.csv", function (data) {
 
-// sort data
-data.sort(function(b, a) {
-  return a.Count - b.Count;
-});
+      // sort data
+      data.sort(function (b, a) {
+        return a.Count - b.Count;
+      });
 
-// Add X axis
-var x = d3.scaleLinear()
-  .domain([0, 2.0])
-  .range([ 0, width]);
-svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(x))
-  .attr("font-size", "14px")
-  .selectAll("text")
-    .attr("transform", "translate(0,0)")
-    .style("text-anchor", "end");
+      // Add X axis
+      var x = d3.scaleLinear()
+        .domain([0, 2.0])
+        .range([0, width]);
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        .attr("font-size", "14px")
+        .selectAll("text")
+        .attr("transform", "translate(0,0)")
+        .style("text-anchor", "end");
 
-// Y axis
-var y = d3.scaleBand()
-  .range([ 0, height ])
-  .domain(data.map(function(d) { return d.Skill; }))
-  .padding(1);
-  
+      // Y axis
+      var y = d3.scaleBand()
+        .range([0, height])
+        .domain(data.map(function (d) { return d.Skill; }))
+        .padding(1);
 
-  svg.append("g")
-  .call(d3.axisLeft(y))
-  .attr("font-size", "14px")
-  .selectAll("text")
-  .text(function(d) {
-    // Convert the text to camel case
-    // Example: convert "example text" to "ExampleText"
-    var words = d.split(" ");
-    var camelCaseText = words.map(function(word) {
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    });
-    return camelCaseText.join(" ");
-  });
 
-// create a tooltip
-var formatCount = d3.format(".2f");
-var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("font-size", "16px")
-  // Three function that change the tooltip when user hover / move / leave a cell
-  var mouseover = function(d) {
-    tooltip
-      .transition()
-      .duration(200)
-      .style("opacity", 1)
-    tooltip
-        .html("Job Title: Business Analyst <br> Skill: "+d.Skill+"<br> Relative Frequency: " + formatCount(d.Count)) 
-        .style("right", (d3.mouse(this)[0]) + "px")
-        .style("top", (d3.mouse(this)[1]) + "px")
-  }
-  var mousemove = function(d) {
-    tooltip
-      .style("right", (d3.mouse(this)[0]+300) + "px")
-      .style("top", (d3.mouse(this)[1]+300) + "px")
-  }
-  var mouseleave = function(d) {
-    tooltip
-      .transition()
-      .duration(200)
-      .style("opacity", 0)
-  }
-// Lines
-svg.selectAll("myline")
-  .data(data)
-  .enter()
-  .append("line")
-    .attr("x1", function(d) { return x(d.Count); })
-    .attr("x2", x(0))
-    .attr("y1", function(d) { return y(d.Skill); })
-    .attr("y2", function(d) { return y(d.Skill); })
-    .attr("stroke", "grey")
-    
-   
+      svg.append("g")
+        .call(d3.axisLeft(y))
+        .attr("font-size", "14px")
+        .selectAll("text")
+        .text(function (d) {
+          // Convert the text to camel case
+          // Example: convert "example text" to "ExampleText"
+          var words = d.split(" ");
+          var camelCaseText = words.map(function (word) {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          });
+          return camelCaseText.join(" ");
+        });
 
-// Circles
-svg.selectAll("mycircle")
-  .data(data)
-  .enter()
-  .append("circle")
-    .attr("cx", function(d) { return x(d.Count); })
-    .attr("cy", function(d) { return y(d.Skill); })
-    .attr("r", "7")
-    .style("fill", "#9370DB")
-    .attr("stroke", "black")
-    .on("mouseover", mouseover)
-    .on("mousemove", mousemove)
-    .on("mouseleave", mouseleave)
-// Add Y axis title:
-// Add Y axis title:
-svg.append("text")
+      // create a tooltip
+      var formatCount = d3.format(".2f");
+      var tooltip = d3.select("body")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .style("font-size", "16px")
+      // Three function that change the tooltip when user hover / move / leave a cell
+      var mouseover = function (d) {
+        tooltip
+          .transition()
+          .duration(200)
+          .style("opacity", 1)
+        tooltip
+          .html("Job Title: Business Analyst <br> Skill: " + d.Skill + "<br> Relative Frequency: " + formatCount(d.Count))
+          .style("right", (d3.mouse(this)[0]) + "px")
+          .style("top", (d3.mouse(this)[1]) + "px")
+      }
+      var mousemove = function (d) {
+        tooltip
+          .style("right", (d3.mouse(this)[0] + 300) + "px")
+          .style("top", (d3.mouse(this)[1] + 300) + "px")
+      }
+      var mouseleave = function (d) {
+        tooltip
+          .transition()
+          .duration(200)
+          .style("opacity", 0)
+      }
+      // Lines
+      svg.selectAll("myline")
+        .data(data)
+        .enter()
+        .append("line")
+        .attr("x1", function (d) { return x(d.Count); })
+        .attr("x2", x(0))
+        .attr("y1", function (d) { return y(d.Skill); })
+        .attr("y2", function (d) { return y(d.Skill); })
+        .attr("stroke", "grey")
+
+
+
+      // Circles
+      svg.selectAll("mycircle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function (d) { return x(d.Count); })
+        .attr("cy", function (d) { return y(d.Skill); })
+        .attr("r", "7")
+        .style("fill", "#9370DB")
+        .attr("stroke", "black")
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
+      // Add Y axis title:
+      // Add Y axis title:
+      svg.append("text")
         .attr("text-anchor", "end")
         .attr("y", -margin.left + 50)
         .attr("x", -height + 300)
         .attr("transform", "rotate(-90)")
         .text("Skill sets")
-        
+
         .style("font-size", "20px")
-       .style("font-weight", "bold")
-       .style("font-family", "Arial");
+        .style("font-weight", "bold")
+        .style("font-family", "Arial");
 
-    // X axis title:
-    svg.append("text")
-    .attr("text-anchor", "end")
-    .attr("x", width + 10)
-    .attr("y", height + margin.top + 10)
-    .text("Relative Frequencies")
-    .style("font-size", "20px")
-    .style("font-weight", "bold")
-    .style("font-family", "Arial");
-
-})
-
-
-var currentButtonId = ""; // Variable to store the ID of the currently focused button
-//after pressing a button
-function update(buttonId,dataset,jobTitle,colorValue){
-
-// Parse the Data
-d3.csv(dataset, function(data) {
-
-// sort data
-data.sort(function(b, a) {
-  return a.Count - b.Count;
-});
-svg.selectAll("*").remove(); 
-// Add X axis
-var x = d3.scaleLinear()
-  .domain([0, 2.0])
-  .range([ 0, width]);
-svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(x))
-  .attr("font-size", "14px")
-  .selectAll("text")
-    .attr("transform", "translate(0,0)")
-    .style("text-anchor", "end");
-
-// Y axis
-var y = d3.scaleBand()
-  .range([ 0, height ])
-  .domain(data.map(function(d) { return d.Skill; }))
-  .padding(1);
-
-svg.append("g")
-  .call(d3.axisLeft(y))
-  .attr("font-size", "14px")
-  .selectAll("text")
-  .text(function(d) {
-    // Convert the text to camel case
-  
-    var words = d.split(" ");
-    var camelCaseText = words.map(function(word) {
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    });
-    return camelCaseText.join(" ");
-  });
-
-// create a tooltip
-var formatCount = d3.format(".2f");
-var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("font-size", "16px")
-  // Three function that change the tooltip when user hover / move / leave a cell
-  var mouseover = function(d) {
-    tooltip
-      .transition()
-      .duration(200)
-      .style("opacity", 1)
-    tooltip
-        .html("Job Title: "+jobTitle+" <br> Skill: "+d.Skill+"<br> Relative Frequency: " + formatCount(d.Count)) 
-        .style("right", (d3.mouse(this)[0]) + "px")
-        .style("top", (d3.mouse(this)[1]) + "px")
-  }
-  var mousemove = function(d) {
-    tooltip
-      .style("right", (d3.mouse(this)[0]+250) + "px")
-      .style("top", (d3.mouse(this)[1]+300) + "px")
-  }
-  var mouseleave = function(d) {
-    tooltip
-      .transition()
-      .duration(200)
-      .style("opacity", 0)
-  }
-  
-// Lines
-svg.selectAll("myline")
-  .data(data)
-  .enter()
-  .append("line")
-    .attr("x1", function(d) { return x(d.Count); })
-    .attr("x2", x(0))
-    .attr("y1", function(d) { return y(d.Skill); })
-    .attr("y2", function(d) { return y(d.Skill); })
-    .attr("stroke", "grey")
-      
-
-// Circles
-svg.selectAll("mycircle")
-  .data(data)
-  .enter()
-  .append("circle")
-    .attr("cx", function(d) { return x(d.Count); })
-    .attr("cy", function(d) { return y(d.Skill); })
-    .attr("r", "7")
-    .style("fill",colorValue)
-    .attr("stroke", "black")
-    .on("mouseover", mouseover)
-    .on("mousemove", mousemove)
-    .on("mouseleave", mouseleave)
-// Add Y axis title:
-svg.append("text")
+      // X axis title:
+      svg.append("text")
         .attr("text-anchor", "end")
-        .attr("y", -margin.left + 50)
-        .attr("x", -height + 300)
-        .attr("transform", "rotate(-90)")
-        .text("Skill sets")
-        
+        .attr("x", width + 10)
+        .attr("y", height + margin.top + 10)
+        .text("Relative Frequencies")
         .style("font-size", "20px")
-       .style("font-weight", "bold")
-       .style("font-family", "Arial");
+        .style("font-weight", "bold")
+        .style("font-family", "Arial");
 
-    // X axis title:
-    svg.append("text")
-    .attr("text-anchor", "end")
-    .attr("x", width + 10)
-    .attr("y", height + margin.top + 10)
-    .text("Relative Frequencies")
-    .style("font-size", "20px")
-    .style("font-weight", "bold")
-    .style("font-family", "Arial");
-    
-  
+    })
+
+
+    var currentButtonId = ""; // Variable to store the ID of the currently focused button
+    //after pressing a button
+    function update(buttonId, dataset, jobTitle, colorValue) {
+
+      // Parse the Data
+      d3.csv(dataset, function (data) {
+
+        // sort data
+        data.sort(function (b, a) {
+          return a.Count - b.Count;
+        });
+        svg.selectAll("*").remove();
+        // Add X axis
+        var x = d3.scaleLinear()
+          .domain([0, 2.0])
+          .range([0, width]);
+        svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x))
+          .attr("font-size", "14px")
+          .selectAll("text")
+          .attr("transform", "translate(0,0)")
+          .style("text-anchor", "end");
+
+        // Y axis
+        var y = d3.scaleBand()
+          .range([0, height])
+          .domain(data.map(function (d) { return d.Skill; }))
+          .padding(1);
+
+        svg.append("g")
+          .call(d3.axisLeft(y))
+          .attr("font-size", "14px")
+          .selectAll("text")
+          .text(function (d) {
+            // Convert the text to camel case
+
+            var words = d.split(" ");
+            var camelCaseText = words.map(function (word) {
+              return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            });
+            return camelCaseText.join(" ");
+          });
+
+        // create a tooltip
+        var formatCount = d3.format(".2f");
+        var tooltip = d3.select("body")
+          .append("div")
+          .style("position", "absolute")
+          .style("z-index", "10")
+          .style("opacity", 0)
+          .attr("class", "tooltip")
+          .style("font-size", "16px")
+        // Three function that change the tooltip when user hover / move / leave a cell
+        var mouseover = function (d) {
+          tooltip
+            .transition()
+            .duration(200)
+            .style("opacity", 1)
+          tooltip
+            .html("Job Title: " + jobTitle + " <br> Skill: " + d.Skill + "<br> Relative Frequency: " + formatCount(d.Count))
+            .style("right", (d3.mouse(this)[0]) + "px")
+            .style("top", (d3.mouse(this)[1]) + "px")
+        }
+        var mousemove = function (d) {
+          tooltip
+            .style("right", (d3.mouse(this)[0] + 250) + "px")
+            .style("top", (d3.mouse(this)[1] + 300) + "px")
+        }
+        var mouseleave = function (d) {
+          tooltip
+            .transition()
+            .duration(200)
+            .style("opacity", 0)
+        }
+
+        // Lines
+        svg.selectAll("myline")
+          .data(data)
+          .enter()
+          .append("line")
+          .attr("x1", function (d) { return x(d.Count); })
+          .attr("x2", x(0))
+          .attr("y1", function (d) { return y(d.Skill); })
+          .attr("y2", function (d) { return y(d.Skill); })
+          .attr("stroke", "grey")
+
+
+        // Circles
+        svg.selectAll("mycircle")
+          .data(data)
+          .enter()
+          .append("circle")
+          .attr("cx", function (d) { return x(d.Count); })
+          .attr("cy", function (d) { return y(d.Skill); })
+          .attr("r", "7")
+          .style("fill", colorValue)
+          .attr("stroke", "black")
+          .on("mouseover", mouseover)
+          .on("mousemove", mousemove)
+          .on("mouseleave", mouseleave)
+        // Add Y axis title:
+        svg.append("text")
+          .attr("text-anchor", "end")
+          .attr("y", -margin.left + 50)
+          .attr("x", -height + 300)
+          .attr("transform", "rotate(-90)")
+          .text("Skill sets")
+
+          .style("font-size", "20px")
+          .style("font-weight", "bold")
+          .style("font-family", "Arial");
+
+        // X axis title:
+        svg.append("text")
+          .attr("text-anchor", "end")
+          .attr("x", width + 10)
+          .attr("y", height + margin.top + 10)
+          .text("Relative Frequencies")
+          .style("font-size", "20px")
+          .style("font-weight", "bold")
+          .style("font-family", "Arial");
+
+
 
         var buttons = document.getElementsByClassName('btn');
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('active');
-    }
-    
-    // Add the active class to the clicked button
-    document.getElementById(buttonId).classList.add('active');
-  
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].classList.remove('active');
+        }
 
-})}
-</script>
-  </body>
-  </html>
+        // Add the active class to the clicked button
+        document.getElementById(buttonId).classList.add('active');
+
+
+      })
+    }
+  </script>
+</body>
+
+</html>

@@ -1,281 +1,285 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="utf-8">
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
-<!-- Tooltip style -->
-<style>
-  .tooltip {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 15px;
-    min-width: 400px;
-    text-align: left;
-    color: black;
-  }
-  .button {
-    background-color: #4CAF50;
-  }
+  <!-- Load d3.js -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+  <!-- Tooltip style -->
+  <style>
+    .tooltip {
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 5px;
+      padding: 15px;
+      min-width: 400px;
+      text-align: left;
+      color: black;
+    }
 
-  .button {
-    background-color: #4CAF50;
-    /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  }
+    .button {
+      background-color: #4CAF50;
+    }
 
-  h2 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: medium;
-  }
+    .button {
+      background-color: #4CAF50;
+      /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
 
-  h1 {
-   
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-style: italic;
-  }
+    h2 {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: medium;
+    }
 
-  p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+    h1 {
+
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-style: italic;
+    }
+
+    p {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
   </style>
 </head>
+
 <body>
   <br>
   <a href="index.html" class="button">Back to Home page</a>
 
   <br>
   <center>
-  <h1> Sentiment analysis on job description </h1>
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+    <h1> Sentiment analysis on job description </h1>
+    <!-- Create a div where the graph will take place -->
+    <div id="my_dataviz"></div>
 
-<script>
-//console.log(words["Data Analyst"]["negativeScore"])
+    <script>
+      //console.log(words["Data Analyst"]["negativeScore"])
 
-// set the dimensions and margins of the graph
-    var margin = { top: 50, right: 250, bottom: 100, left:300 },
-    width = 1000 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-    
-    // append the svg object to the body of the page
-    var svg = d3.select("#my_dataviz")
-      .append("svg")
+      // set the dimensions and margins of the graph
+      var margin = { top: 50, right: 250, bottom: 100, left: 300 },
+        width = 1000 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+      // append the svg object to the body of the page
+      var svg = d3.select("#my_dataviz")
+        .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
-      .append("g")
+        .append("g")
         .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")");
-     
-             let words= {
-    "Data Scientist": {
-        "negativeScore": [ "fire", "naive", "demand", "hunger", "wrong", "rigorous", "loss", "unfortunately", "sad", "negative", "injured", "spam", "waste", "cutting", "harassment"],
-        "positiveScore": ["benefits", "strong", "ability", "solutions", "opportunity", "please", "advanced", "opportunities", "support", "help", "vision", "like", "create", "intelligence", "value"],
-        "neutralScore": ["highimpact", "diagnose", "tell", "definition", "nonroutine", "evolvement", "easytoconsume", "storylines", "indicated", "bs", "cs", "terabyte", "powerbi", "kmeans", "mandarin", "connects"]
-    },
-    "Business Analyst": {
-        "negativeScore": ["bias", "obstacles", "harassment", "uncertainty", "stopping", "hard", "desperately", "seriously", "victim", "violence", "assault", "po", "criminal", "avoidance", "missed"],
-        "positiveScore": ["ability", "solutions", "support", "strong", "create", "benefits", "well", "excellent", "vision", "ensure", "responsible", "opportunities", "help", "solution", "good"],
-        "neutralScore": ["communication", "teams", "from", "we", "related", "contract", "fulltime", "functional", "issues", "develop", "at", "documentation", "responsibilities", "including", "information"]
-    },
-    "Data Engineer": {
-        "negativeScore": ["pay", "problems", "limited", "problem", "critical", "hard", "no", "harassment", "leave", "manipulation", "disaster", "obstacles", "arrest", "blocks", "error"],
-        "positiveScore": ["solutions", "strong", "ability", "support", "spark", "benefits", "well", "good", "best", "create", "vision", "advanced", "please", "optimizing", "like"],
-        "neutralScore": [ "shift", "knowledge", "aws", "other", "management", "contract", "type", "have", "big", "analysis", "software", "building", "understanding"]
-    },
-    "Database Administrator": {
-        "negativeScore": ["leave", "no", "emergency", "risk", "errors", "illness", "manipulation", "vulnerable", "risks", "stress", "failures", "error", "pressure", "repetitive", "loss"],
-        "positiveScore":["troubleshooting", "effectively", "create", "protected", "please", "integrity", "opportunities", "solve", "join", "well", "committed", "best", "desirable", "optimization", "like", "help"],
-        "neutralScore": ["project", "assist", "minimum", "issues", "recovery", "computer", "from", "you", "design", "location", "dba", "more", "technologies", "teams", "standards"]
-    },
-    "Machine Learning Engineer": {
-        "negativeScore": ["pain", "fail", "painful", "errors", "rigorous", "no", "challenged", "limited", "critical", "manipulating", "tough", "sick", "offline", "difficult", "pain"],
-        "positiveScore": ["benefits", "solutions", "support", "ability", "vision", "strong", "help", "ensure", "best", "solve", "opportunity", "protected", "good", "improve", "excellent"],
-        "neutralScore": ["loading", "query", "soft", "mindset", "knowing", "solutionfinding", "empathic", "m", "ph", "saas", "deduplication", "entity", "resolution", "reconcile", "utilizes"]
-    },
-    "Business Intelligence Developer": {
-        "negativeScore": ["lower", "error", "disadvantaged", "harassment", "leave", "no", "mock", "lower", "error", "disadvantaged", "harassment", "degraded", "criminal", "lone", "litigation"],
-        "positiveScore": ["intelligence", "ability", "solutions", "benefits", "support", "strong", "opportunity", "best", "vision", "flexible", "create", "responsible", "opportunities", "help", "comprehensive"],
-        "neutralScore": ["insurance", "an", "development", "team", "requirements", "design", "are", "will", "year", "preferred", "s", "job", "systems", "new", "other", "developer"]
-    },
-    "Data Analyst": {
-        "negativeScore": ["pay", "problem", "problems", "manipulation","risk", "leave", "demand", "defects", "threats", "unmatched", "litigation", "attackers", "threat", "adversaries", "hard"],
-        "positiveScore": ["support", "good", "solutions", "focused", "solution", "ability", "help", "assurance", "supporting", "supported", "successful", "dynamic", "amazon", "benefits", "vision"],
-        "neutralScore": ["accessrelated", "servicebased", "transformation", "engineers", "scientists", "contribute", "based", "prior", "latest", "technologies", "rapidly", "marketplace", "independently", "organization", "enhanced"]
-    }
-};
+          "translate(" + margin.left + "," + margin.top + ")");
 
-
-    // Parse the Data
-    d3.csv("data/data_stack.csv", function(data) {
-      
-      // List of subgroups = header of the csv files = soil condition here
-      var subgroups = data.columns.slice(1)
-    
-      // List of groups = species here = value of the first column called group -> I show them on the X axis
-      var groups = d3.map(data, function(d){return(d.group)}).keys()
-   
-      // Add Y axis
-  var y = d3.scaleBand()
-    .domain(groups)
-    .range([0, height])
-    .padding([0.2]);
-  svg.append("g")
-    .call(d3.axisLeft(y))
-    .style("font-size", "18px")
-    .style("font-family", "Arial");
-
-  // Add X axis
-  var x = d3.scaleLinear()
-    .domain([0, 1])
-    .range([0, width]);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
-    .style("font-size", "18px")
-    .style("font-family", "Arial");
-
-  // Color palette = one color per subgroup
-  var color = d3.scaleOrdinal()
-    .domain(subgroups)
-    .range(['#e41a1c','#4daf4a', '#FFBB78' ])
-    
-      //stack the data? --> stack per subgroup
-      var stackedData = d3.stack()
-        .keys(subgroups)
-        (data)
-    
-    
-    
-    
-      // ----------------
-      // Create a tooltip
-      // ----------------
-      var formatCount = d3.format(".2f");
-      var tooltip = d3.select("body")
-        .append("div")
-        .style("position", "absolute")
-        .style("z-index", "10")
-        .style("opacity", 0)
-        .attr("class", "tooltip")
-      .style("font-size", "16px")
-    
-      // Three function that change the tooltip when user hover / move / leave a cell
-     
-       
-      var mouseover = function(jobTitle, subgroupName,subgroupValue,ww) {
-        
-  
-
-        
-        tooltip
-       
-            .html("Job Title : "+jobTitle+"</br>Group : " + subgroupName + "<br>Sentiment score: " + formatCount(subgroupValue)+"</br>Word list : "+ww)
-            .style("opacity", 1)
+      let words = {
+        "Data Scientist": {
+          "negativeScore": ["fire", "naive", "demand", "hunger", "wrong", "rigorous", "loss", "unfortunately", "sad", "negative", "injured", "spam", "waste", "cutting", "harassment"],
+          "positiveScore": ["benefits", "strong", "ability", "solutions", "opportunity", "please", "advanced", "opportunities", "support", "help", "vision", "like", "create", "intelligence", "value"],
+          "neutralScore": ["highimpact", "diagnose", "tell", "definition", "nonroutine", "evolvement", "easytoconsume", "storylines", "indicated", "bs", "cs", "terabyte", "powerbi", "kmeans", "mandarin", "connects"]
+        },
+        "Business Analyst": {
+          "negativeScore": ["bias", "obstacles", "harassment", "uncertainty", "stopping", "hard", "desperately", "seriously", "victim", "violence", "assault", "po", "criminal", "avoidance", "missed"],
+          "positiveScore": ["ability", "solutions", "support", "strong", "create", "benefits", "well", "excellent", "vision", "ensure", "responsible", "opportunities", "help", "solution", "good"],
+          "neutralScore": ["communication", "teams", "from", "we", "related", "contract", "fulltime", "functional", "issues", "develop", "at", "documentation", "responsibilities", "including", "information"]
+        },
+        "Data Engineer": {
+          "negativeScore": ["pay", "problems", "limited", "problem", "critical", "hard", "no", "harassment", "leave", "manipulation", "disaster", "obstacles", "arrest", "blocks", "error"],
+          "positiveScore": ["solutions", "strong", "ability", "support", "spark", "benefits", "well", "good", "best", "create", "vision", "advanced", "please", "optimizing", "like"],
+          "neutralScore": ["shift", "knowledge", "aws", "other", "management", "contract", "type", "have", "big", "analysis", "software", "building", "understanding"]
+        },
+        "Database Administrator": {
+          "negativeScore": ["leave", "no", "emergency", "risk", "errors", "illness", "manipulation", "vulnerable", "risks", "stress", "failures", "error", "pressure", "repetitive", "loss"],
+          "positiveScore": ["troubleshooting", "effectively", "create", "protected", "please", "integrity", "opportunities", "solve", "join", "well", "committed", "best", "desirable", "optimization", "like", "help"],
+          "neutralScore": ["project", "assist", "minimum", "issues", "recovery", "computer", "from", "you", "design", "location", "dba", "more", "technologies", "teams", "standards"]
+        },
+        "Machine Learning Engineer": {
+          "negativeScore": ["pain", "fail", "painful", "errors", "rigorous", "no", "challenged", "limited", "critical", "manipulating", "tough", "sick", "offline", "difficult", "pain"],
+          "positiveScore": ["benefits", "solutions", "support", "ability", "vision", "strong", "help", "ensure", "best", "solve", "opportunity", "protected", "good", "improve", "excellent"],
+          "neutralScore": ["loading", "query", "soft", "mindset", "knowing", "solutionfinding", "empathic", "m", "ph", "saas", "deduplication", "entity", "resolution", "reconcile", "utilizes"]
+        },
+        "Business Intelligence Developer": {
+          "negativeScore": ["lower", "error", "disadvantaged", "harassment", "leave", "no", "mock", "lower", "error", "disadvantaged", "harassment", "degraded", "criminal", "lone", "litigation"],
+          "positiveScore": ["intelligence", "ability", "solutions", "benefits", "support", "strong", "opportunity", "best", "vision", "flexible", "create", "responsible", "opportunities", "help", "comprehensive"],
+          "neutralScore": ["insurance", "an", "development", "team", "requirements", "design", "are", "will", "year", "preferred", "s", "job", "systems", "new", "other", "developer"]
+        },
+        "Data Analyst": {
+          "negativeScore": ["pay", "problem", "problems", "manipulation", "risk", "leave", "demand", "defects", "threats", "unmatched", "litigation", "attackers", "threat", "adversaries", "hard"],
+          "positiveScore": ["support", "good", "solutions", "focused", "solution", "ability", "help", "assurance", "supporting", "supported", "successful", "dynamic", "amazon", "benefits", "vision"],
+          "neutralScore": ["accessrelated", "servicebased", "transformation", "engineers", "scientists", "contribute", "based", "prior", "latest", "technologies", "rapidly", "marketplace", "independently", "organization", "enhanced"]
+        }
       };
-      var mousemove = function(d) {
-        tooltip
-          .style("left", (d3.mouse(this)[0]+100) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", (d3.mouse(this)[1]+300) + "px")
-      };
-      var mouseleave = function(d) {
-        tooltip
+
+
+      // Parse the Data
+      d3.csv("../data/data_stack.csv", function (data) {
+
+        // List of subgroups = header of the csv files = soil condition here
+        var subgroups = data.columns.slice(1)
+
+        // List of groups = species here = value of the first column called group -> I show them on the X axis
+        var groups = d3.map(data, function (d) { return (d.group) }).keys()
+
+        // Add Y axis
+        var y = d3.scaleBand()
+          .domain(groups)
+          .range([0, height])
+          .padding([0.2]);
+        svg.append("g")
+          .call(d3.axisLeft(y))
+          .style("font-size", "18px")
+          .style("font-family", "Arial");
+
+        // Add X axis
+        var x = d3.scaleLinear()
+          .domain([0, 1])
+          .range([0, width]);
+        svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x))
+          .style("font-size", "18px")
+          .style("font-family", "Arial");
+
+        // Color palette = one color per subgroup
+        var color = d3.scaleOrdinal()
+          .domain(subgroups)
+          .range(['#e41a1c', '#4daf4a', '#FFBB78'])
+
+        //stack the data? --> stack per subgroup
+        var stackedData = d3.stack()
+          .keys(subgroups)
+          (data)
+
+
+
+
+        // ----------------
+        // Create a tooltip
+        // ----------------
+        var formatCount = d3.format(".2f");
+        var tooltip = d3.select("body")
+          .append("div")
+          .style("position", "absolute")
+          .style("z-index", "10")
           .style("opacity", 0)
-      };
-    
-    
-    
-    
-      // Show the bars
-      svg.append("g")
-        .selectAll("g")
-        // Enter in the stack data = loop key per key = group per group
-        .data(stackedData)
-      
-        .enter().append("g")
-          .attr("fill", function(d) { return color(d.key); })
+          .attr("class", "tooltip")
+          .style("font-size", "16px")
+
+        // Three function that change the tooltip when user hover / move / leave a cell
+
+
+        var mouseover = function (jobTitle, subgroupName, subgroupValue, ww) {
+
+
+
+
+          tooltip
+
+            .html("Job Title : " + jobTitle + "</br>Group : " + subgroupName + "<br>Sentiment score: " + formatCount(subgroupValue) + "</br>Word list : " + ww)
+            .style("opacity", 1)
+        };
+        var mousemove = function (d) {
+          tooltip
+            .style("left", (d3.mouse(this)[0] + 100) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+            .style("top", (d3.mouse(this)[1] + 300) + "px")
+        };
+        var mouseleave = function (d) {
+          tooltip
+            .style("opacity", 0)
+        };
+
+
+
+
+        // Show the bars
+        svg.append("g")
+          .selectAll("g")
+          // Enter in the stack data = loop key per key = group per group
+          .data(stackedData)
+
+          .enter().append("g")
+          .attr("fill", function (d) { return color(d.key); })
           .selectAll("rect")
           // enter a second time = loop subgroup per subgroup to add all rectangles
-          .data(function(d) { return d; })
-         // console.log(data.group)
+          .data(function (d) { return d; })
+          // console.log(data.group)
           //.words(function() { return {jobTitle:d.data.group, group:d.key}})//text: d.word, size:d.size,story_title:story}; }))
           .enter().append("rect")
-          .attr("x", function(d) { return x(d[0]); })
-          .attr("y", function(d) { return y(d.data.group); })
-          .attr("width", function(d) { return x(d[1]) - x(d[0]); })
+          .attr("x", function (d) { return x(d[0]); })
+          .attr("y", function (d) { return y(d.data.group); })
+          .attr("width", function (d) { return x(d[1]) - x(d[0]); })
           .attr("height", y.bandwidth())
           .attr("stroke", "grey")
-           
-          .on("mouseover", function(d) {
-    var subgroupName = d3.select(this.parentNode).datum().key.toString();
-    var jobTitle = d.data.group.toString();
-   
-   
-    var wordlist=words[jobTitle][subgroupName];
-    var subgroupValue = d.data[subgroupName];
-    
-    //var ww = words[jobTitle][subgroupName];
-    mouseover(jobTitle, subgroupName,subgroupValue,wordlist);
-  })
+
+          .on("mouseover", function (d) {
+            var subgroupName = d3.select(this.parentNode).datum().key.toString();
+            var jobTitle = d.data.group.toString();
+
+
+            var wordlist = words[jobTitle][subgroupName];
+            var subgroupValue = d.data[subgroupName];
+
+            //var ww = words[jobTitle][subgroupName];
+            mouseover(jobTitle, subgroupName, subgroupValue, wordlist);
+          })
           .on("mousemove", mousemove)
           .on("mouseleave", mouseleave);
-    
-   
-   // Add Y axis label
-   svg.append("text")
-    .attr("class", "y label")
-    .attr("text-anchor", "end")
-    .attr("y", -margin.left + 20)
-    .attr("x", -margin.top - 50)
-    .attr("transform", "rotate(-90)")
-    .text("Jobs")
-    .style("font-size", "20px")
-    .style("font-weight", "bold")
-    .style("font-family", "Arial");
 
-  // Add X axis label
-  svg.append("text")
-  .attr("text-anchor", "end")
-    .attr("x", width + 50)
-    .attr("y", height + margin.top + 10)
-    .text("Scores")
-    .style("font-size", "20px")
-    .style("font-weight", "bold")
-    .style("font-family", "Arial");
 
-  // Add legend
-  var legend = svg.append("g")
-    .attr("class", "legend")
-    .attr("transform", "translate(" + (width +100) + "," + 30 + ")")
-    .selectAll("g")
-    .data(subgroups)
-    .enter().append("g")
-    .attr("transform", function (d, i) { return "translate(0," + i * 30 + ")"; })
-    .style("font-size", "18px")
-    .style("font-family", "Arial");
+        // Add Y axis label
+        svg.append("text")
+          .attr("class", "y label")
+          .attr("text-anchor", "end")
+          .attr("y", -margin.left + 20)
+          .attr("x", -margin.top - 50)
+          .attr("transform", "rotate(-90)")
+          .text("Jobs")
+          .style("font-size", "20px")
+          .style("font-weight", "bold")
+          .style("font-family", "Arial");
 
-  legend.append("rect")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("width", 18)
-    .attr("height", 18)
-    .attr("fill", color);
+        // Add X axis label
+        svg.append("text")
+          .attr("text-anchor", "end")
+          .attr("x", width + 50)
+          .attr("y", height + margin.top + 10)
+          .text("Scores")
+          .style("font-size", "20px")
+          .style("font-weight", "bold")
+          .style("font-family", "Arial");
 
-  legend.append("text")
-    .attr("x", 24)
-    .attr("y", 9)
-    .attr("dy", ".35em")
-    .text(function (d) { return d; });
-  }) 
-</script>
-</center>
-   </body>
-   </html>
+        // Add legend
+        var legend = svg.append("g")
+          .attr("class", "legend")
+          .attr("transform", "translate(" + (width + 100) + "," + 30 + ")")
+          .selectAll("g")
+          .data(subgroups)
+          .enter().append("g")
+          .attr("transform", function (d, i) { return "translate(0," + i * 30 + ")"; })
+          .style("font-size", "18px")
+          .style("font-family", "Arial");
+
+        legend.append("rect")
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("width", 18)
+          .attr("height", 18)
+          .attr("fill", color);
+
+        legend.append("text")
+          .attr("x", 24)
+          .attr("y", 9)
+          .attr("dy", ".35em")
+          .text(function (d) { return d; });
+      }) 
+    </script>
+  </center>
+</body>
+
+</html>
