@@ -1,0 +1,8 @@
+﻿group,negativeScore,positiveScore,neutralScore
+Business Analyst,0.0165,0.139,0.8445
+Business Intelligence Developer,0.0154,0.1758,0.8088
+Data Analyst,0.0072,0.1872,0.8056
+Data Engineer,0.0096,0.1302,0.8602
+Data Scientist,0.0192,0.1452,0.8356
+Database Administrator,0.0154,0.1478,0.8368
+Machine Learning Engineer,0.0122,0.1399,0.8479
