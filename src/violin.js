@@ -12,35 +12,129 @@ const color5 = "#FFDAB9";
 const color6 = "#f2555d";
 const color7 = "#D2B48C";
 
+// // Define an object to store the tooltip data
+// var tooltipData = {
+//   "Business Analyst": {
+//     minSalary: 36400,
+//     maxSalary: 208000
+//   },
+//   "Business Intelligence Developer": {
+//     minSalary: 57200,
+//     maxSalary: 151840
+//   },
+//   "Data Analyst": {
+//     minSalary: 33280,
+//     maxSalary: 162240
+//   },
+//   "Data Engineer": {
+//     minSalary: 41600,
+//     maxSalary: 187200
+//   },
+//   "Data Scientist": {
+//     minSalary: 36400,
+//     maxSalary: 215010
+//   },
+//   "Database Administrator": {
+//     minSalary: 50211,
+//     maxSalary: 165360
+//   },
+//   "Machine Learning Engineer": {
+//     minSalary: 52000,
+//     maxSalary: 194106
+//   }
+// };
+
 // Define an object to store the tooltip data
 var tooltipData = {
-  "Business Analyst": {
-    minSalary: 36400,
-    maxSalary: 208000
+  "All": {
+    "Business Analyst": {
+      minSalary: 36400,
+      maxSalary: 208000
+    },
+    "Business Intelligence Developer": {
+      minSalary: 57200,
+      maxSalary: 151840
+    },
+    "Data Analyst": {
+      minSalary: 33280,
+      maxSalary: 162240
+    },
+    "Data Engineer": {
+      minSalary: 41600,
+      maxSalary: 187200
+    },
+    "Data Scientist": {
+      minSalary: 36400,
+      maxSalary: 215010
+    },
+    "Database Administrator": {
+      minSalary: 50211,
+      maxSalary: 165360
+    },
+    "Machine Learning Engineer": {
+      minSalary: 52000,
+      maxSalary: 194106
+    }
   },
-  "Business Intelligence Developer": {
-    minSalary: 57200,
-    maxSalary: 151840
+  "Remote": {
+    "Business Analyst": {
+      minSalary: 28800,
+      maxSalary: 168000
+    },
+    "Business Intelligence Developer": {
+      minSalary: 79997,
+      maxSalary: 152880
+    },
+    "Data Analyst": {
+      minSalary: 56160,
+      maxSalary: 135200
+    },
+    "Data Engineer": {
+      minSalary: 41600,
+      maxSalary: 215010
+    },
+    "Data Scientist": {
+      minSalary: 49920,
+      maxSalary: 187200
+    },
+    "Database Administrator": {
+      minSalary: 62795,
+      maxSalary: 162490
+    },
+    "Machine Learning Engineer": {
+      minSalary: 61360,
+      maxSalary: 194106
+    }
   },
-  "Data Analyst": {
-    minSalary: 33280,
-    maxSalary: 162240
-  },
-  "Data Engineer": {
-    minSalary: 41600,
-    maxSalary: 187200
-  },
-  "Data Scientist": {
-    minSalary: 36400,
-    maxSalary: 215010
-  },
-  "Database Administrator": {
-    minSalary: 50211,
-    maxSalary: 165360
-  },
-  "Machine Learning Engineer": {
-    minSalary: 52000,
-    maxSalary: 194106
+  "In-person": {
+    "Business Analyst": {
+      minSalary: 36400,
+      maxSalary: 208000
+    },
+    "Business Intelligence Developer": {
+      minSalary: 57200,
+      maxSalary: 151840
+    },
+    "Data Analyst": {
+      minSalary: 33280,
+      maxSalary: 162240
+    },
+    "Data Engineer": {
+      minSalary: 41600,
+      maxSalary: 187200
+    },
+    "Data Scientist": {
+      minSalary: 36400,
+      maxSalary: 215010
+    },
+    "Database Administrator": {
+      minSalary: 50211,
+      maxSalary: 165360
+    },
+    "Machine Learning Engineer": {
+      minSalary: 52000,
+      maxSalary: 194106
+    }
   }
 };
 
@@ -121,11 +215,11 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
 
     // Create y-axis label
     mainSvg
-    .append("text")
-    .attr("class", "myText")
-    .attr("transform", "translate(-80," + height / 40 + ") rotate(-360)")
-    .style("text-anchor", "middle")
-    .text("Salary");
+      .append("text")
+      .attr("class", "myText")
+      .attr("transform", "translate(-80," + height / 40 + ") rotate(-360)")
+      .style("text-anchor", "middle")
+      .text("Salary");
 
 
     // Create histogram function
@@ -166,15 +260,18 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
     var xNum = d3.scaleLinear().range([0, x.bandwidth() * 1.5]).domain([-maxNum, maxNum]);
 
     // Draw violin plots
-    mainSvg
+    var violinGroups = mainSvg
       .selectAll("myViolin")
       .data(sumstat)
       .enter()
       .append("g")
+      .attr("class", "violin-group")
       .attr("transform", function (d) {
         var xPosition = x(d.key) + (x.bandwidth() - xNum(maxNum)) / 2;
         return "translate(" + xPosition + ",-1)";
-      })
+      });
+
+    violinGroups
       .append("path")
       .datum(function (d) {
         return d.value;
@@ -195,6 +292,23 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
         })
         .curve(d3.curveCatmullRom)
       )
+      .on("mouseover", function (event, d) {
+        var location = Object.keys(tooltipData)[0]; // Get the first key for location
+        var jobTitle = d3.select(this.parentNode).datum().key;
+        var jobData = tooltipData[location][jobTitle];
+        var tooltipHTML = "<strong>" + jobTitle + "</strong><br>" +
+          "Min Salary: $" + jobData.minSalary + "<br>" +
+          "Max Salary: $" + jobData.maxSalary;
+    
+        tooltip
+          .html(tooltipHTML)
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 10) + "px")
+          .style("opacity", 0.9);
+      })
+      .on("mouseout", function () {
+        tooltip.style("opacity", 0);
+      });
 
     // Add legends
     var legendLabels = [
@@ -243,19 +357,19 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
 }
 
 // Set default graph
-d3.csv("combined.csv", function (data) {
-  updateViolinPlots("combined.csv", 0, 240000);
+d3.csv("../data/combined.csv", function (data) {
+  updateViolinPlots("../data/combined.csv", 0, 240000);
 });
 
 // Event listener for radio buttons
 d3.selectAll('input[name="file"]').on("change", function () {
   var selectedFile = this.value;
 
-  if (selectedFile === "combined.csv") {
-    updateViolinPlots("combined.csv", 0, 240000);
-  } else if (selectedFile === "remote.csv") {
-    updateViolinPlots("remote.csv", 0, 240000);
-  } else if (selectedFile === "inperson.csv") {
-    updateViolinPlots("inperson.csv", 0, 240000);
+  if (selectedFile === "../data/combined.csv") {
+    updateViolinPlots("../data/combined.csv", 0, 240000);
+  } else if (selectedFile === "../data/remote.csv") {
+    updateViolinPlots("../data/remote.csv", 0, 240000);
+  } else if (selectedFile === "../data/inperson.csv") {
+    updateViolinPlots("../data/inperson.csv", 0, 240000);
   }
 });
