@@ -3,7 +3,7 @@ var margin = {top: 60, right: 30, bottom: 40, left:150},
     height = 700 - margin.top - margin.bottom;
 
 // Load data from CSV file
-d3.csv("scatterplot_data.csv").then(function(data) {
+d3.csv("../data/scatterplot_data.csv").then(function(data) {
 
     // Define data
     data.forEach(function(d) {
