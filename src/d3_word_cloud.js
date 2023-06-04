@@ -75,7 +75,7 @@ function generateCloud(myWords, containerId) {
             .style("font-size", function (d) {
                 return d.size;
             })
-            .style("fill", "#45BFBF")
+            .style("fill", "#4C78A8")
             .attr("text-anchor", "middle")
             .style("font-family", "Impact")
             .attr("transform", function (d) {
@@ -110,9 +110,9 @@ function generateCloud(myWords, containerId) {
         );
         allTextElements.forEach(function (element) {
             if (overlappingWords.includes(element.textContent)) {
-                element.style.fill = "#3C4473";
+                element.style.fill = "#F58518";
             } else {
-                element.style.fill = "#45BFBF";
+                element.style.fill = "#4C78A8";
             }
         });
     }
