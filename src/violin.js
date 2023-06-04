@@ -76,32 +76,32 @@ var tooltipData = {
   },
   "In-person": {
     "Business Analyst": {
-      minSalary: 36400,
-      maxSalary: 208000
+      minSalary: 48506,
+      maxSalary: 130000
     },
     "Business Intelligence Developer": {
       minSalary: 57200,
-      maxSalary: 151840
+      maxSalary: 150259
     },
     "Data Analyst": {
       minSalary: 33280,
-      maxSalary: 162240
+      maxSalary: 94298
     },
     "Data Engineer": {
-      minSalary: 41600,
-      maxSalary: 187200
+      minSalary: 64500,
+      maxSalary: 174990
     },
     "Data Scientist": {
       minSalary: 36400,
-      maxSalary: 215010
+      maxSalary: 209498
     },
     "Database Administrator": {
       minSalary: 50211,
-      maxSalary: 165360
+      maxSalary: 166400
     },
     "Machine Learning Engineer": {
       minSalary: 52000,
-      maxSalary: 194106
+      maxSalary: 185557
     }
   }
 };
