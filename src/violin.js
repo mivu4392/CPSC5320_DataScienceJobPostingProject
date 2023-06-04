@@ -293,9 +293,17 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
         .curve(d3.curveCatmullRom)
       )
       .on("mouseover", function (event, d) {
-        var location = Object.keys(tooltipData)[0]; // Get the first key for location
+        var selectedKey;
+        if (selectedFile === "../data/combined.csv") {
+          selectedKey = Object.keys(tooltipData)[0]; // First key
+        } else if (selectedFile === "../data/remote.csv") {
+          selectedKey = Object.keys(tooltipData)[1]; // Second key
+        } else if (selectedFile === "../data/inperson.csv") {
+          selectedKey = Object.keys(tooltipData)[2]; // Third key
+        }
+    
         var jobTitle = d3.select(this.parentNode).datum().key;
-        var jobData = tooltipData[location][jobTitle];
+        var jobData = tooltipData[selectedKey][jobTitle];
         var tooltipHTML = "<strong>" + jobTitle + "</strong><br>" +
           "Min Salary: $" + jobData.minSalary + "<br>" +
           "Max Salary: $" + jobData.maxSalary;
