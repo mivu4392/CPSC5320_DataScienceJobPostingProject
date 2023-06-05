@@ -1,6 +1,6 @@
 // Set the dimensions and margins of the graph
 var margin = { top: 10, right: 50, bottom: 30, left: 110 },
-  width = 1200 - margin.left - margin.right,
+  width = 1300 - margin.left - margin.right,
   height = 520 - margin.top - margin.bottom;
 
 // Define colors
@@ -187,7 +187,7 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
     mainSvg
       .append("text")
       .attr("class", "myText")
-      .attr("transform", "translate(-80," + height / 40 + ") rotate(-360)")
+      .attr("transform", "translate(-70," + height/2 + ") rotate(-90)")
       .style("text-anchor", "middle")
       .text("Salary");
 
