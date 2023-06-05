@@ -274,63 +274,17 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
           .html(tooltipHTML)
           .transition()
           .style("opacity", 0.9)
-          .style("left", d3.event.pageX + "px")
-          .style("top", d3.event.pageY + "px");
+          .style("left", (d3.event.pageX + 10) + "px")
+          .style("top", (d3.event.pageY + 10) + "px");
       })
       .on("mousemove", function (event) {
         tooltip
-          .style("left", d3.event.pageX + "px")
-          .style("top", d3.event.pageY + "px");
+          .style("left", (d3.event.pageX + 10) + "px")
+          .style("top", (d3.event.pageY + 10) + "px");
       })
       .on("mouseout", function () {
         tooltip.style("opacity", 0);
       });
-
-
-
-    // Add legends
-    // var legendLabels = [
-    //   "Business Analyst",
-    //   "Business Intelligence Developer",
-    //   "Data Analyst",
-    //   "Data Scientist",
-    //   "Data Engineer",
-    //   "Database Administrator",
-    //   "Machine Learning Engineer"
-    // ];
-    // var legendColors = [color1, color2, color3, color4, color5, color6, color7];
-
-    // var legend = legendsSvg
-    //   .append("g")
-    //   .attr("class", "legend")
-    //   .attr("transform", "translate(-10," + margin.top + ")"); // Adjust the y-axis translation as needed
-
-    // var legendItems = legend.selectAll(".legend-item")
-    //   .data(legendLabels)
-    //   .enter()
-    //   .append("g")
-    //   .attr("class", "legend-item")
-    //   .attr("transform", function (d, i) {
-    //     return "translate(0," + i * 20 + ")";
-    //   });
-
-    // legendItems
-    //   .append("rect")
-    //   .attr("x", 0)
-    //   .attr("y", -8) // Adjust the y-position to align with the plot
-    //   .attr("width", 10)
-    //   .attr("height", 10)
-    //   .attr("fill", function (d, i) {
-    //     return legendColors[i];
-    //   });
-
-    // legendItems
-    //   .append("text")
-    //   .attr("x", 20)
-    //   .attr("y", 0) // Adjust the y-position to align with the plot
-    //   .text(function (d) {
-    //     return d;
-    //   });
   });
 }
 

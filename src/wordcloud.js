@@ -7,18 +7,21 @@ function loadDefaultCloud() {
     generateCloud(words["Business Analyst"], "right_cloud");
 }
 
+var enableMouseover = true; // Flag variable to control mouseover cursor behavior
+
 // Change the left word cloud when select differen job title
 function onLeftSelectionChange(value) {
     console.log('onSelectionChange - ', value)
     generateCloud(words[value], "left_cloud");
-    highlightOverlappingWords();
+    enableMouseover = true; // Enable mouseover cursor
+    highlightOverlappingWords(); // Reset highlighting
 }
 
-// Change the right word cloud when select differen job title
 function onRightSelectionChange(value) {
     console.log('onSelectionChange - ', value)
     generateCloud(words[value], "right_cloud");
-    highlightOverlappingWords();
+    enableMouseover = true; // Enable mouseover cursor
+    highlightOverlappingWords(); // Reset highlighting
 }
 
 // Create world cloud based on jobs and div container
@@ -27,11 +30,11 @@ function generateCloud(myWords, containerId) {
     container.innerHTML = '';
 
     // Set the dimensions and margins of the graph
-    var margin = { top: 30, right: 10, bottom: 10, left: 10 };
+    var margin = { top: 50, right: 10, bottom: 10, left: 10 };
     var windowWidth = window.innerWidth;
     var windowHeight = window.innerHeight;
     var width = windowWidth / 2 - 3 * margin.left - margin.right;
-    var height = windowHeight / 1.4 - margin.top - margin.bottom;
+    var height = windowHeight / 1.3 - margin.top - margin.bottom;
 
     // Append the svg object to the container
     var svg = d3
@@ -61,7 +64,6 @@ function generateCloud(myWords, containerId) {
         .on("end", draw);
     layout.start();
 
-    // Draw the words
     function draw(words) {
         svg.append("g")
             .attr(
@@ -86,6 +88,13 @@ function generateCloud(myWords, containerId) {
             })
             .on("click", function (d) {
                 highlightOverlappingWords(d.text);
+                d3.select(this).style("cursor", "default");
+                enableMouseover = false; // Disable mouseover cursor
+            })
+            .on("mouseover", function () {
+                if (enableMouseover) {
+                    d3.select(this).style("cursor", "pointer");
+                }
             });
     }
 
@@ -117,5 +126,3 @@ function generateCloud(myWords, containerId) {
         });
     }
 }
-
-
