@@ -56,10 +56,11 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             transition: box-shadow 0.3s;
+            cursor: pointer; /* Add cursor style */
         }
 
         select:hover {
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Adjust the desired box shadow */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Adjust the desired box shadow */
         }
 
         option {
@@ -77,6 +78,12 @@
             right: 10px;
             z-index: 1;
         }
+        label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 22px;
+}
 
         .container {
             display: flex;
@@ -98,9 +105,8 @@
     <br>
     <div class="container">
         <div id="left">
-            <label>Select Job Title</label>
-            <br>
-            <select onchange="onLeftSelectionChange(this.value)">
+            <label for="left-selection">Select Job Title</label>
+            <select id="left-selection" onchange="onLeftSelectionChange(this.value)" class="selection-box">
                 <option value="Business Analyst">Business Analyst</option>
                 <option value="Business Intelligence Developer">Business Intelligence Developer</option>
                 <option value="Data Analyst">Data Analyst</option>
@@ -112,9 +118,8 @@
             <div id="left_cloud"></div>
         </div>
         <div id="right">
-            <label>Select Job Title</label>
-            <br>
-            <select onchange="onRightSelectionChange(this.value)">
+            <label for="right-selection">Select Job Title</label>
+            <select id="right-selection" onchange="onRightSelectionChange(this.value)" class="selection-box">
                 <option value="Business Analyst">Business Analyst</option>
                 <option value="Business Intelligence Developer">Business Intelligence Developer</option>
                 <option value="Data Analyst">Data Analyst</option>
