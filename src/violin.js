@@ -1,7 +1,7 @@
 // Set the dimensions and margins of the graph
-var margin = { top: 10, right: 50, bottom: 30, left: 110 },
-  width = 1300 - margin.left - margin.right,
-  height = 520 - margin.top - margin.bottom;
+var margin = { top: 5, right: 50, bottom: 30, left: 110 },
+  width = window.innerWidth - margin.left - margin.right,
+  height = 510 - margin.top - margin.bottom;
 
 // Define colors
 const color1 = "#87CEEB";
