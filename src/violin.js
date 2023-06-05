@@ -1,7 +1,7 @@
 // Set the dimensions and margins of the graph
 var margin = { top: 5, right: 50, bottom: 30, left: 110 },
   width = window.innerWidth - margin.left - margin.right,
-  height = 510 - margin.top - margin.bottom;
+  height = window.innerHeight / 1.3 - margin.top - margin.bottom;
 
 // Define colors
 const color1 = "#87CEEB";
@@ -114,15 +114,6 @@ var mainSvg = d3
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-// Append the legends SVG object to the body of the page
-var legendsSvg = d3
-  .select("#my_dataviz")
-  .append("svg")
-  .attr("width", 250) // Adjust the width as needed
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(10," + margin.top + ")"); // Adjust the left margin as needed
 
 // Create a tooltip
 var tooltip = d3.select("body")

@@ -51,13 +51,17 @@
         h1 {
             position: relative;
             top: -70px;
-            left: 250px;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 35px;
+            text-align: center;
         }
         #Xaxis {
             position: relative;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            top: 530px;
+            top: -70%;
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
             font-size: large;
             font-style: bold;
@@ -95,9 +99,8 @@
         <label for="file3">In-person</label>
     </form>
 
-    <div id="Xaxis">Job Title</div>
-
     <div id="my_dataviz" style="margin: 0 auto; display: block;"></div>
+    <div id="Xaxis">Job Title</div>
 
     <script src="violin.js"></script>
 
