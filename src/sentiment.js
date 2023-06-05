@@ -1,9 +1,9 @@
 // set the dimensions and margins of the graph
-var margin = { top: 50, right: 250, bottom: 100, left: 300 }
+var margin = { top: 10, right: 350, bottom: 100, left: 300 }
 var windowWidth = window.innerWidth;
 var windowHeight = window.innerHeight;
-var width = windowWidth - 2 * margin.left - margin.right;
-var height = windowHeight - 6 * margin.top - margin.bottom;
+var width = windowWidth - 1.5 * margin.left - margin.right;
+var height = windowHeight - margin.top - 2.5 * margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -27,17 +27,17 @@ d3.csv("../data/data_stack.csv", function (data) {
 
   // Add Y axis
   var y = d3.scaleBand()
-  .domain(groups)
-  .range([0, height])
-  .padding([0.2])
-  .align(0.5); // Set the alignment to 0.5 for centering the bars
+    .domain(groups)
+    .range([0, height])
+    .padding([0.2])
+    .align(0.5); // Set the alignment to 0.5 for centering the bars
   var yAxis = svg.append("g")
-  .attr("class", "y-axis")
-  .style("font-size", "18px")
-  .style("font-family", "Arial")
-  .call(d3.axisLeft(y).tickSize(0));
+    .attr("class", "y-axis")
+    .style("font-size", "18px")
+    .style("font-family", "Arial")
+    .call(d3.axisLeft(y).tickSize(0));
   yAxis.selectAll("text")
-  .attr("x", -10); // Adjust the x position by subtracting 10 pixels
+    .attr("x", -10); // Adjust the x position by subtracting 10 pixels
 
   // Add X axis
   var x = d3.scaleLinear()
@@ -94,8 +94,10 @@ d3.csv("../data/data_stack.csv", function (data) {
   };
   var mousemove = function (d) {
     tooltip
-      .style("left", (d3.mouse(this)[0] + 460) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-      .style("top", (d3.mouse(this)[1] + 200) + "px")
+      // .style("left", (d3.mouse(this)[0] + 460) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+      // .style("top", (d3.mouse(this)[1] + 200) + "px")
+      .style("left", (d3.event.pageX + 10) + "px")
+      .style("top", (d3.event.pageY + 10) + "px");
   };
   var mouseleave = function (d) {
     tooltip
@@ -155,8 +157,8 @@ d3.csv("../data/data_stack.csv", function (data) {
   // Add X axis label
   svg.append("text")
     .attr("text-anchor", "end")
-    .attr("x", width /1.5)
-    .attr("y", height + margin.top + 10)
+    .attr("x", width / 2)
+    .attr("y", height + margin.bottom / 2)
     .text("Sentiment Scores")
     .style("font-size", "20px")
     .style("font-weight", "bold")
@@ -169,20 +171,20 @@ d3.csv("../data/data_stack.csv", function (data) {
     .selectAll("g")
     .data(subgroups)
     .enter().append("g")
-    .attr("transform", function (d, i) { return "translate(0," + i * 30 + ")"; })
+    .attr("transform", function (d, i) { return "translate(0," + i * 50 + ")"; })
     .style("font-size", "18px")
     .style("font-family", "Arial");
 
   legend.append("rect")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("width", 18)
-    .attr("height", 18)
+    .attr("x", margin.right / 7)
+    .attr("y", height / 2 - margin.bottom - margin.top)
+    .attr("width", 30)
+    .attr("height", 30)
     .attr("fill", color);
 
   legend.append("text")
-    .attr("x", 24)
-    .attr("y", 9)
+    .attr("x", margin.right/ 4)
+    .attr("y", height / 2 - margin.bottom + 5)
     .attr("dy", ".35em")
     .text(function (d) {
       if (d === "negativeScore") return "Negative";
