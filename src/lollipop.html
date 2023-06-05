@@ -15,6 +15,20 @@
       overflow-x: hidden;
       background-color: rgb(250, 250, 239);
     }
+    .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            z-index: 9999;
+        }
 
     .tooltip {
       background-color: white;
@@ -69,10 +83,7 @@
 </head>
 
 <body>
-  <br>
-  <button onclick="location.href='../index.html'"
-    style="background-color: #4CAF50;padding: 15px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 15px;">Back
-    to Home page</button>
+  <a href="../index.html" class="button">Back to Home page</a>
   <h1>Relative frequency of skillsets for different jobs. </h1>
   <center>
     <h3>Select a Job Title:
