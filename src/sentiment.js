@@ -27,13 +27,17 @@ d3.csv("../data/data_stack.csv", function (data) {
 
   // Add Y axis
   var y = d3.scaleBand()
-    .domain(groups)
-    .range([0, height])
-    .padding([0.2]);
-  svg.append("g")
-    .call(d3.axisLeft(y))
-    .style("font-size", "18px")
-    .style("font-family", "Arial");
+  .domain(groups)
+  .range([0, height])
+  .padding([0.2])
+  .align(0.5); // Set the alignment to 0.5 for centering the bars
+  var yAxis = svg.append("g")
+  .attr("class", "y-axis")
+  .style("font-size", "18px")
+  .style("font-family", "Arial")
+  .call(d3.axisLeft(y).tickSize(0));
+  yAxis.selectAll("text")
+  .attr("x", -10); // Adjust the x position by subtracting 10 pixels
 
   // Add X axis
   var x = d3.scaleLinear()
@@ -48,7 +52,7 @@ d3.csv("../data/data_stack.csv", function (data) {
   // Color palette = one color per subgroup
   var color = d3.scaleOrdinal()
     .domain(subgroups)
-    .range(['#e41a1c', '#4daf4a', '#FFBB78'])
+    .range(['#4daf4a', '#FFBB78', '#e41a1c'])
 
   //stack the data? --> stack per subgroup
   var stackedData = d3.stack()
@@ -83,15 +87,15 @@ d3.csv("../data/data_stack.csv", function (data) {
         "<tr>" + "<td>Job Title:</td>" + "<td style=\"padding-left: 10px;\">" + jobTitle + "</td>" + "</tr>" +
         "<tr>" + "<td>Group:</td>" + "<td style=\"padding-left: 10px;\">" + subgroupName + "</td>" + "</tr>" +
         "<tr>" + "<td>Sentiment Score:</td>" + "<td style=\"padding-left: 10px;\">" + formatCount(subgroupValue) + "</td>" + "</tr>" +
-        "<tr>" + "<td style=\"vertical-align: top;\">Word List:</td>" + "<td style=\"width: 250px; padding-left: 10px;\" >" + ww + "</td>" + "</tr>" +
+        "<tr>" + "<td style=\"vertical-align: top;\">Word List:</td>" + "<td style=\"width: 220px; padding-left: 10px;\" >" + ww + "</td>" + "</tr>" +
         "</table>")
       .style("opacity", 1)
 
   };
   var mousemove = function (d) {
     tooltip
-      .style("left", (d3.mouse(this)[0] + 500) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-      .style("top", (d3.mouse(this)[1] + 250) + "px")
+      .style("left", (d3.mouse(this)[0] + 460) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+      .style("top", (d3.mouse(this)[1] + 200) + "px")
   };
   var mouseleave = function (d) {
     tooltip
@@ -116,9 +120,9 @@ d3.csv("../data/data_stack.csv", function (data) {
     //.words(function() { return {jobTitle:d.data.group, group:d.key}})//text: d.word, size:d.size,story_title:story}; }))
     .enter().append("rect")
     .attr("x", function (d) { return x(d[0]); })
-    .attr("y", function (d) { return y(d.data.group); })
+    .attr("y", function (d) { return y(d.data.group) + (y.bandwidth() - 40) / 2; })
     .attr("width", function (d) { return x(d[1]) - x(d[0]); })
-    .attr("height", y.bandwidth())
+    .attr("height", y.bandwidth() - 10)
     .attr("stroke", "grey")
 
     .on("mouseover", function (d) {
@@ -144,7 +148,7 @@ d3.csv("../data/data_stack.csv", function (data) {
     .attr("x", -height / 2) // Set x position to half of the height
     .attr("transform", "rotate(-90)")
     .text("Jobs")
-    .style("font-size", "23px")
+    .style("font-size", "22px")
     .style("font-weight", "bold")
     .style("font-family", "Arial");
 
