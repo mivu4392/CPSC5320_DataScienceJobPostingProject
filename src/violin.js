@@ -1,7 +1,7 @@
 // Set the dimensions and margins of the graph
-var margin = { top: 30, right: 30, bottom: 30, left: 110 },
-  width = 1020 - margin.left - margin.right,
-  height = 450 - margin.top - margin.bottom;
+var margin = { top: 10, right: 50, bottom: 30, left: 110 },
+  width = 1200 - margin.left - margin.right,
+  height = 520 - margin.top - margin.bottom;
 
 // Define colors
 const color1 = "#87CEEB";
@@ -173,7 +173,7 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
         "Database Administrator",
         "Machine Learning Engineer"
       ])
-      .padding(0.2);
+      .padding(0.25);
 
     // Append x-axis to the main SVG
     mainSvg
@@ -181,7 +181,7 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x))
       .selectAll("text")
-      .style("font-size", "10px");
+      .style("font-size", "12px");
 
     // Create y-axis label
     mainSvg
@@ -298,48 +298,48 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
 
 
     // Add legends
-    var legendLabels = [
-      "Business Analyst",
-      "Business Intelligence Developer",
-      "Data Analyst",
-      "Data Scientist",
-      "Data Engineer",
-      "Database Administrator",
-      "Machine Learning Engineer"
-    ];
-    var legendColors = [color1, color2, color3, color4, color5, color6, color7];
+    // var legendLabels = [
+    //   "Business Analyst",
+    //   "Business Intelligence Developer",
+    //   "Data Analyst",
+    //   "Data Scientist",
+    //   "Data Engineer",
+    //   "Database Administrator",
+    //   "Machine Learning Engineer"
+    // ];
+    // var legendColors = [color1, color2, color3, color4, color5, color6, color7];
 
-    var legend = legendsSvg
-      .append("g")
-      .attr("class", "legend")
-      .attr("transform", "translate(-10," + margin.top + ")"); // Adjust the y-axis translation as needed
+    // var legend = legendsSvg
+    //   .append("g")
+    //   .attr("class", "legend")
+    //   .attr("transform", "translate(-10," + margin.top + ")"); // Adjust the y-axis translation as needed
 
-    var legendItems = legend.selectAll(".legend-item")
-      .data(legendLabels)
-      .enter()
-      .append("g")
-      .attr("class", "legend-item")
-      .attr("transform", function (d, i) {
-        return "translate(0," + i * 20 + ")";
-      });
+    // var legendItems = legend.selectAll(".legend-item")
+    //   .data(legendLabels)
+    //   .enter()
+    //   .append("g")
+    //   .attr("class", "legend-item")
+    //   .attr("transform", function (d, i) {
+    //     return "translate(0," + i * 20 + ")";
+    //   });
 
-    legendItems
-      .append("rect")
-      .attr("x", 0)
-      .attr("y", -8) // Adjust the y-position to align with the plot
-      .attr("width", 10)
-      .attr("height", 10)
-      .attr("fill", function (d, i) {
-        return legendColors[i];
-      });
+    // legendItems
+    //   .append("rect")
+    //   .attr("x", 0)
+    //   .attr("y", -8) // Adjust the y-position to align with the plot
+    //   .attr("width", 10)
+    //   .attr("height", 10)
+    //   .attr("fill", function (d, i) {
+    //     return legendColors[i];
+    //   });
 
-    legendItems
-      .append("text")
-      .attr("x", 20)
-      .attr("y", 0) // Adjust the y-position to align with the plot
-      .text(function (d) {
-        return d;
-      });
+    // legendItems
+    //   .append("text")
+    //   .attr("x", 20)
+    //   .attr("y", 0) // Adjust the y-position to align with the plot
+    //   .text(function (d) {
+    //     return d;
+    //   });
   });
 }
 
