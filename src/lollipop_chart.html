@@ -40,10 +40,11 @@
     }
 
     h1 {
-      margin-left: 300px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-style: italic;
-    }
+
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-style: italic;
+font-size: 35px;
+}
 
     p {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -71,23 +72,23 @@
 
     <h1 style="text-align: center;">Relative frequency of skillsets for different jobs. </h1>
     <h3>Select a Job Title:
-      <button id="businessAnalystBtn" class="btn" style="color:#9370DB;"
-        onclick="update('businessAnalystBtn','data/skillset_ba.csv','Business Analyst','#9370DB')" active>Business
+      <button id="businessAnalystBtn" class="btn" style="color:#9370DB;font-size: medium;"
+        onclick="update('businessAnalystBtn','../data/skillset_ba.csv','Business Analyst','#9370DB')" active>Business
         Analyst</button>
-      <button id="biDevBtn" class="btn" style="color:#FFB6C1;"
-        onclick="update('biDevBtn','data/skillset_bid.csv','Business Intelligence Developer','#FFB6C1')">Business
+      <button id="biDevBtn" class="btn" style="color:#FFB6C1;font-size: medium;"
+        onclick="update('biDevBtn','../data/skillset_bid.csv','Business Intelligence Developer','#FFB6C1')">Business
         Intelligence Developer</button>
-      <button id="dataAnalystBtn" class="btn" style="color: #87CEEB;"
-        onclick="update('dataAnalystBtn','data/skillset_da.csv','Data Analyst','#87CEEB')">Data Analyst</button>
-      <button id="dataEngineerBtn" class="btn" style="color:#FFDAB9;"
-        onclick="update('dataEngineerBtn','data/skillset_de.csv','Data Engineer','#FFDAB9')">Data Engineer</button>
-      <button id="dataScientistBtn" class="btn" style="color:#90EE90;"
-        onclick="update('dataScientistBtn','data/skillset_ds.csv','Data Scientist','90EE90')">Data Scientist</button>
-      <button id="dbAdminBtn" class="btn" style="color: #f2555d;"
-        onclick="update('dbAdminBtn','data/skillset_dba.csv','Database Administrator','#f2555d')">Database
+      <button id="dataAnalystBtn" class="btn" style="color: #87CEEB;font-size: medium;"
+        onclick="update('dataAnalystBtn','../data/skillset_da.csv','Data Analyst','#87CEEB')">Data Analyst</button>
+      <button id="dataEngineerBtn" class="btn" style="color:#FFDAB9;font-size: medium;"
+        onclick="update('dataEngineerBtn','../data/skillset_de.csv','Data Engineer','#FFDAB9')">Data Engineer</button>
+      <button id="dataScientistBtn" class="btn" style="color:#90EE90;font-size: medium;"
+        onclick="update('dataScientistBtn','../data/skillset_ds.csv','Data Scientist','90EE90')">Data Scientist</button>
+      <button id="dbAdminBtn" class="btn" style="color: #f2555d;font-size: medium;"
+        onclick="update('dbAdminBtn','../data/skillset_dba.csv','Database Administrator','#f2555d')">Database
         Administrator</button>
-      <button id="mlEngineerBtn" class="btn" style="color: #D2B48C;"
-        onclick="update('mlEngineerBtn','data/skillset_mle.csv','Machine Learning Engineer','#D2B48C')">Machine Learning
+      <button id="mlEngineerBtn" class="btn" style="color: #D2B48C;font-size: medium;"
+        onclick="update('mlEngineerBtn','../data/skillset_mle.csv','Machine Learning Engineer','#D2B48C')">Machine Learning
         Engineer</button>
 
       <br /><br /></br>
@@ -115,9 +116,9 @@
     // Parse the Data
     d3.csv("../data/skillset_ba.csv", function (data) {
 
-      // sort data
+       //sort data
       data.sort(function (b, a) {
-        return a.Count - b.Count;
+       return a.Count - b.Count;
       });
 
       // Add X axis
@@ -169,7 +170,13 @@
           .duration(200)
           .style("opacity", 1)
         tooltip
-          .html("Job Title: Business Analyst <br> Skill: " + d.Skill + "<br> Relative Frequency: " + formatCount(d.Count))
+          
+          .html("<table>" +
+        "<tr>" + "<td>Job Title:</td>" + "<td style=\"padding-left: 1px;\">" + "Business Analyst" + "</td>" + "</tr>" +
+        "<tr>" + "<td>Skill:</td>" + "<td style=\"padding-left: 10px;\">" + d.Skill + "</td>" + "</tr>" +
+        "<tr>" + "<td>Relative Frequency:</td>" + "<td style=\"padding-left: 10px;\">" + formatCount(d.Count) + "</td>" + "</tr>" +
+        
+        "</table>")
           .style("right", (d3.mouse(this)[0]) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
       }
@@ -210,28 +217,30 @@
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
-      // Add Y axis title:
-      // Add Y axis title:
-      svg.append("text")
-        .attr("text-anchor", "end")
-        .attr("y", -margin.left + 50)
-        .attr("x", -height + 300)
-        .attr("transform", "rotate(-90)")
-        .text("Skill sets")
 
-        .style("font-size", "20px")
-        .style("font-weight", "bold")
-        .style("font-family", "Arial");
+        // Add Y axis label
+  svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "middle") // Set text-anchor to "middle"
+    .attr("y", -margin.left + 20)
+    .attr("x", -height / 2) // Set x position to half of the height
+    .attr("transform", "rotate(-90)")
+    .text("Skill sets")
+    .style("font-size", "23px")
+    .style("font-weight", "bold")
+    .style("font-family", "Arial");
 
-      // X axis title:
-      svg.append("text")
-        .attr("text-anchor", "end")
-        .attr("x", width + 10)
-        .attr("y", height + margin.top + 10)
-        .text("Relative Frequencies")
-        .style("font-size", "20px")
-        .style("font-weight", "bold")
-        .style("font-family", "Arial");
+  // Add X axis label
+  svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width / 2)
+    .attr("y", height + margin.top + 10)
+    .text("Relative Frequencies")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .style("font-family", "Arial");
+
+      
 
     })
 
@@ -296,7 +305,13 @@
             .duration(200)
             .style("opacity", 1)
           tooltip
-            .html("Job Title: " + jobTitle + " <br> Skill: " + d.Skill + "<br> Relative Frequency: " + formatCount(d.Count))
+          .html("<table>" +
+        "<tr>" + "<td>Job Title:</td>" + "<td style=\"padding-left: 1px;\">" + jobTitle + "</td>" + "</tr>" +
+        "<tr>" + "<td>Skill:</td>" + "<td style=\"padding-left: 10px;\">" + d.Skill + "</td>" + "</tr>" +
+        "<tr>" + "<td>Relative Frequency:</td>" + "<td style=\"padding-left: 10px;\">" + formatCount(d.Count) + "</td>" + "</tr>" +
+        
+        "</table>")
+            
             .style("right", (d3.mouse(this)[0]) + "px")
             .style("top", (d3.mouse(this)[1]) + "px")
         }
@@ -337,28 +352,27 @@
           .on("mouseover", mouseover)
           .on("mousemove", mousemove)
           .on("mouseleave", mouseleave)
-        // Add Y axis title:
-        svg.append("text")
-          .attr("text-anchor", "end")
-          .attr("y", -margin.left + 50)
-          .attr("x", -height + 300)
-          .attr("transform", "rotate(-90)")
-          .text("Skill sets")
+        // Add Y axis label
+  svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "middle") // Set text-anchor to "middle"
+    .attr("y", -margin.left + 20)
+    .attr("x", -height / 2) // Set x position to half of the height
+    .attr("transform", "rotate(-90)")
+    .text("Skill sets")
+    .style("font-size", "23px")
+    .style("font-weight", "bold")
+    .style("font-family", "Arial");
 
-          .style("font-size", "20px")
-          .style("font-weight", "bold")
-          .style("font-family", "Arial");
-
-        // X axis title:
-        svg.append("text")
-          .attr("text-anchor", "end")
-          .attr("x", width + 10)
-          .attr("y", height + margin.top + 10)
-          .text("Relative Frequencies")
-          .style("font-size", "20px")
-          .style("font-weight", "bold")
-          .style("font-family", "Arial");
-
+  // Add X axis label
+  svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width / 2)
+    .attr("y", height + margin.top + 10)
+    .text("Relative Frequencies")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .style("font-family", "Arial");
 
 
         var buttons = document.getElementsByClassName('btn');
