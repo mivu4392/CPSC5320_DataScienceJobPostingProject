@@ -14,6 +14,7 @@ function onLeftSelectionChange(value) {
     console.log('onSelectionChange - ', value)
     generateCloud(words[value], "left_cloud");
     enableMouseover = true; // Enable mouseover cursor
+    resetCursor();
     highlightOverlappingWords(); // Reset highlighting
 }
 
@@ -21,7 +22,13 @@ function onRightSelectionChange(value) {
     console.log('onSelectionChange - ', value)
     generateCloud(words[value], "right_cloud");
     enableMouseover = true; // Enable mouseover cursor
+    resetCursor();
     highlightOverlappingWords(); // Reset highlighting
+}
+
+// Reset cursor behavior for all text elements
+function resetCursor() {
+    document.body.style.cursor = "default";
 }
 
 // Create world cloud based on jobs and div container
@@ -88,12 +95,15 @@ function generateCloud(myWords, containerId) {
             })
             .on("click", function (d) {
                 highlightOverlappingWords(d.text);
-                d3.select(this).style("cursor", "default");
+                d3.selectAll("#left_cloud text, #right_cloud text")
+                    .style("cursor", "default"); // Reset cursor for all words
                 enableMouseover = false; // Disable mouseover cursor
             })
             .on("mouseover", function () {
                 if (enableMouseover) {
                     d3.select(this).style("cursor", "pointer");
+                } else {
+                    d3.select(this).style("cursor", "default");
                 }
             });
     }
@@ -124,5 +134,6 @@ function generateCloud(myWords, containerId) {
                 element.style.fill = "#4C78A8";
             }
         });
+        
     }
 }
