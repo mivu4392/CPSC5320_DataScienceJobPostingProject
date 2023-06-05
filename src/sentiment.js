@@ -155,9 +155,9 @@ d3.csv("../data/data_stack.csv", function (data) {
   // Add X axis label
   svg.append("text")
     .attr("text-anchor", "end")
-    .attr("x", width / 2)
+    .attr("x", width /1.5)
     .attr("y", height + margin.top + 10)
-    .text("Scores")
+    .text("Sentiment Scores")
     .style("font-size", "20px")
     .style("font-weight", "bold")
     .style("font-family", "Arial");
