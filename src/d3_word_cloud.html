@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Word Clouds</title>
@@ -11,12 +12,14 @@
             overflow-x: hidden;
             background-color: rgb(250, 250, 239);
         }
+
         .button {
             background-color: #4CAF50;
         }
 
         .button {
-            background-color: #4CAF50; /* Green */
+            background-color: #4CAF50;
+            /* Green */
             border: none;
             color: white;
             padding: 15px 32px;
@@ -43,7 +46,8 @@
             width: 300px;
             height: 35px;
             padding: 5px;
-            border: none;
+            border: 1px solid #333;
+            /* Add border style */
             border-radius: 5px;
             background-color: #B6DBF2;
             font-size: 20px;
@@ -51,7 +55,6 @@
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
-            margin: auto;
         }
 
         option {
@@ -74,19 +77,16 @@
             display: flex;
         }
 
-        #left, #right {
+        #left,
+        #right {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
-        .highlight {
-        background-color: yellow;
-    }
-
     </style>
 </head>
+
 <body onload="loadDefaultCloud()">
     <a href="../index.html" class="button">Back to Home page</a>
     <h1>Word Cloud Comparison between two Jobs</h1>
@@ -121,4 +121,5 @@
     </div>
     <script src="d3_word_cloud.js"></script>
 </body>
+
 </html>
