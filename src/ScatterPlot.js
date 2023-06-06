@@ -124,8 +124,8 @@ d3.csv("../data/scatterplot_data.csv").then(function (data) {
   // Add X-axis label
   svg
     .append("text")
-    .attr("x", width / 2 + 50)
-    .attr("y", height )
+    .attr("x", width / 2 + 30)
+    .attr("y", height + 10)
     .attr("text-anchor", "middle")
     .text("Rating")
     .style("font-size", "20px")
