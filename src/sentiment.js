@@ -87,7 +87,7 @@ d3.csv("../data/data_stack.csv", function (data) {
         "<tr>" + "<td>Job Title:</td>" + "<td style=\"padding-left: 10px;\">" + jobTitle + "</td>" + "</tr>" +
         "<tr>" + "<td>Group:</td>" + "<td style=\"padding-left: 10px;\">" + subgroupName + "</td>" + "</tr>" +
         "<tr>" + "<td>Sentiment Score:</td>" + "<td style=\"padding-left: 10px;\">" + formatCount(subgroupValue) + "</td>" + "</tr>" +
-        "<tr>" + "<td style=\"vertical-align: top;\">Word List:</td>" + "<td style=\"width: 220px; padding-left: 10px;\" >" + ww + "</td>" + "</tr>" +
+        "<tr>" + "<td style=\"vertical-align: top;\">Word List:</td>" + "<td style=\"width: 230px; padding-left: 10px;\" >" + ww + "</td>" + "</tr>" +
         "</table>")
       .style("opacity", 1)
 
