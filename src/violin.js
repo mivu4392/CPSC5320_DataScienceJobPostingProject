@@ -268,8 +268,8 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
         var jobData = tooltipData[selectedKey][jobTitle];
         var tooltipHTML = "<strong>" + jobTitle + "</strong><br>" +
           "<table>" + 
-          "<tr>" + "<td style=\"width: 100px\">Min Salary:</td>" + "<td style=\"text-align: right; width: 200px\">$" + jobData.minSalary + "</td>" + "</tr>" +
-          "<tr>" + "<td style=\"width: 100px\">Max Salary:</td>" + "<td style=\"text-align: right; width: 200px\">$" + jobData.maxSalary + "</td>" + "</tr>" +
+          "<tr>" + "<td style=\"width: 90px\">Min Salary:</td>" + "<td style=\"text-align: right; \">$" + jobData.minSalary + "</td>" + "</tr>" +
+          "<tr>" + "<td style=\"width: 90px\">Max Salary:</td>" + "<td style=\"text-align: right; \">$" + jobData.maxSalary + "</td>" + "</tr>" +
           "</table>";
         tooltip
           .html(tooltipHTML)
