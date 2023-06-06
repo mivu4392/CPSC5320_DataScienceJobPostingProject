@@ -180,7 +180,8 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
       .attr("class", "myText")
       .attr("transform", "translate(-70," + height/2 + ") rotate(-90)")
       .style("text-anchor", "middle")
-      .text("Salary");
+      .text("Salary")
+      .style("font-weight", "bold");
 
 
     // Create histogram function
