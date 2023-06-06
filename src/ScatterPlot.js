@@ -66,9 +66,9 @@ d3.csv("../data/scatterplot_data.csv").then(function (data) {
       // Update the tooltip content
       tooltip.html("<table>" +
         "<tr>" + "<td>Job Title:</td>" + "<td style=\"padding-left: 10px;\">" + d.title + "</td>" + "</tr>" +
-        "<tr>" + "<td>Salary:</td>" + "<td style=\"padding-left: 10px; text-align: right;\">" + formattedSalary + "</td>" + "</tr>" +
-        "<tr>" + "<td>Job Rating:</td>" + "<td style=\"padding-left: 10px; text-align: right;\">" + d.rating + "</td>" + "</tr>" +
-        "<tr>" + "<td>Job Location:</td>" + "<td style=\"padding-left: 10px; text-align: right;\">" + d.location + "</td>" + "</tr>" +
+        "<tr>" + "<td>Salary:</td>" + "<td style=\"padding-left: 10px; \">" + formattedSalary + "</td>" + "</tr>" +
+        "<tr>" + "<td>Job Rating:</td>" + "<td style=\"padding-left: 10px; \">" + d.rating + "</td>" + "</tr>" +
+        "<tr>" + "<td style=\"width: 100px;\">Job Location:</td>" + "<td style=\"padding-left: 10px; \">" + d.location + "</td>" + "</tr>" +
         "</table>")
         .style("left", (d3.event.pageX + 10) + "px")
         .style("top", (d3.event.pageY - 10) + "px")
