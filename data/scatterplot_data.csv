@@ -1,0 +1,309 @@
+title,salary,job_rating,job_location
+Data Scientist,36400,3.7,in-person
+Data Scientist,36400,3.7,in-person
+Business Analyst,36400,3.5,remote
+Data Engineer,41600,3.9,remote
+Data Scientist,43264,4.4,in-person
+Business Analyst,48505.6,3.6,in-person
+Data Scientist,49920,4.9,remote
+Data Engineer,49920,3.7,remote
+Database Administrator,50211.2,4.1,in-person
+Data Engineer,52000,3.7,remote
+Data Engineer,52000,3.7,remote
+Machine Learning Engineer,52000,3.9,in-person
+Business Analyst,54600,3.2,in-person
+Business Intelligence Developer,57200,3.2,in-person
+Business Intelligence Developer,57200,3.2,in-person
+Business Analyst,57200,3.6,remote
+Business Analyst,57200,2.75,in-person
+Data Engineer,57200,3.7,remote
+Business Intelligence Developer,57200,3.2,in-person
+Data Scientist,57491.2,3.8,remote
+Business Analyst,60320,3.8,in-person
+Business Analyst,60320,4.1,in-person
+Machine Learning Engineer,61360,3.8,remote
+Data Scientist,62400,3.6,remote
+Data Engineer,62400,3.7,remote
+Database Administrator,62400,4.4,in-person
+Business Analyst,62400,3.9,remote
+Business Analyst,62504,3.6,remote
+Database Administrator,62795.2,2.7,remote
+Database Administrator,63440,3.4,in-person
+Database Administrator,64480,3,remote
+Data Engineer,65000,3.3,in-person
+Business Intelligence Developer,67496,4.1,in-person
+Business Analyst,67496,3.6,remote
+Business Analyst,67496,3.6,remote
+Data Engineer,67600,3.7,remote
+Business Analyst,67600,3.7,remote
+Business Analyst,67600,3.6,remote
+Database Administrator,69680,3.5,in-person
+Business Analyst,69680,3.6,remote
+Business Analyst,69992,3.6,remote
+Business Analyst,69992,3,in-person
+Business Analyst,69992,3.6,remote
+Business Analyst,69992,3.6,remote
+Business Analyst,69992,3.6,remote
+Business Analyst,71760,3.7,remote
+Business Analyst,72508.8,3.6,remote
+Business Analyst,72508.8,3.6,remote
+Data Scientist,72508.8,3.6,remote
+Business Analyst,72508.8,3.5,in-person
+Business Analyst,72508.8,3.6,remote
+Business Analyst,72800,3.6,remote
+Business Analyst,72800,3.6,remote
+Data Scientist,72800,3.6,remote
+Data Engineer,72800,3.8,hybrid
+Business Analyst,72800,3.6,remote
+Data Engineer,72800,3.7,remote
+Database Administrator,74880,4.1,in-person
+Database Administrator,74880,4.1,in-person
+Business Analyst,75004.8,3.1,remote
+Database Administrator,75004.8,4.3,in-person
+Business Analyst,75004.8,3.4,remote
+Database Administrator,75920,3.5,remote
+Business Analyst,75920,3.6,remote
+Data Analyst,77500.8,4.4,remote
+Machine Learning Engineer,78000,4.5,remote
+Data Scientist,78000,3.8,remote
+Business Analyst,78353.6,2.9,hybrid
+Data Analyst,79019.2,4.5,remote
+Data Analyst,79019.2,4.5,remote
+Business Intelligence Developer,79996.8,4,remote
+Business Intelligence Developer,79996.8,4,remote
+Database Administrator,79996.8,3.8,remote
+Business Analyst,80080,3.6,remote
+Business Analyst,81972.8,3.3,in-person
+Business Intelligence Developer,81972.8,3.3,in-person
+Business Intelligence Developer,82492.8,4,in-person
+Business Analyst,82492.8,2.75,in-person
+Database Administrator,83200,3.5,remote
+Database Administrator,84198.4,3.3,remote
+Data Engineer,85280,3.7,remote
+Business Intelligence Developer,85924.8,4.1,remote
+Business Intelligence Developer,85924.8,4.1,remote
+Business Intelligence Developer,86008,3.5,in-person
+Business Analyst,86008,3.4,remote
+Business Analyst,86008,3.4,remote
+Business Analyst,86320,4.1,remote
+Database Administrator,86507.2,3.7,in-person
+Data Scientist,86528,3.8,in-person
+Machine Learning Engineer,86528,3.9,remote
+Business Intelligence Developer,86528,4,remote
+Data Engineer,86528,3.7,in-person
+Business Analyst,86528,3.6,remote
+Business Intelligence Developer,87193.6,3.9,in-person
+Business Analyst,88004.8,3.7,remote
+Data Scientist,88067.2,4.6,remote
+Business Analyst,90001.6,3.6,remote
+Business Intelligence Developer,90001.6,3.3,hybrid
+Business Analyst,90001.6,3.6,hybrid
+Business Intelligence Developer,90001.6,3.7,remote
+Data Scientist,90001.6,3.8,in-person
+Business Analyst,90480,3.6,in-person
+Data Scientist,91000,3.8,remote
+Data Scientist,91000,3.8,remote
+Business Analyst,91520,4.8,in-person
+Database Administrator,91873.6,3.7,hybrid
+Machine Learning Engineer,92206.4,3.6,remote
+Database Administrator,92456,3.6,remote
+Database Administrator,93454.4,3.3,in-person
+Data Scientist,93496,3.8,remote
+Data Engineer,93600,3.7,remote
+Business Intelligence Developer,93600,4.3,in-person
+Business Analyst,93600,3.6,remote
+Business Intelligence Developer,93600,4.3,in-person
+Data Scientist,93995.2,3.7,remote
+Data Scientist,94348.8,3.3,in-person
+Machine Learning Engineer,94619.2,3.9,remote
+Machine Learning Engineer,94619.2,3.9,remote
+Data Engineer,94993.6,3.8,remote
+Data Engineer,94993.6,3.7,remote
+Database Administrator,96158.4,3.5,remote
+Business Intelligence Developer,96262.4,4,remote
+Database Administrator,97510.4,3.9,remote
+Data Engineer,97510.4,3.7,remote
+Database Administrator,98800,3.5,remote
+Data Engineer,100006.4,3.8,remote
+Business Intelligence Developer,100006.4,3.2,hybrid
+Business Intelligence Developer,100006.4,3.9,in-person
+Business Intelligence Developer,101254.4,4.7,remote
+Data Scientist,102044.8,3.6,in-person
+Business Intelligence Developer,102419.2,3.3,in-person
+Business Intelligence Developer,102502.4,3,remote
+Database Administrator,102502.4,3.2,remote
+Database Administrator,102502.4,3.2,remote
+Data Engineer,102606.4,3.5,remote
+Data Engineer,102710.4,3.2,in-person
+Data Engineer,102710.4,3.2,in-person
+Data Engineer,104000,3.7,remote
+Data Scientist,104000,3.6,remote
+Business Analyst,104998.4,4,in-person
+Machine Learning Engineer,104998.4,3.9,remote
+Business Intelligence Developer,105996.8,3.7,in-person
+Data Scientist,106995.2,3.6,remote
+Machine Learning Engineer,107494.4,3.9,remote
+Database Administrator,107494.4,3.3,remote
+Data Engineer,108160,3.7,remote
+Business Intelligence Developer,109574.4,3.7,in-person
+Business Intelligence Developer,109990.4,3.3,in-person
+Business Analyst,111425.6,3.6,remote
+Data Engineer,112320,2.6,remote
+Data Engineer,112507.2,3.7,remote
+Data Engineer,114275.2,3.5,in-person
+Business Analyst,114400,3.7,hybrid
+Business Analyst,114400,3.7,in-person
+Business Analyst,114400,3.7,hybrid
+Data Engineer,114400,3.7,remote
+Business Analyst,114400,3.7,in-person
+Data Engineer,114400,3.7,remote
+Business Analyst,114400,3.7,hybrid
+Business Analyst,114400,3.7,hybrid
+Business Analyst,114400,4,remote
+Data Engineer,115003.2,3.7,remote
+Data Engineer,115003.2,3.7,remote
+Business Intelligence Developer,115003.2,2.9,hybrid
+Data Scientist,117312,3.6,remote
+Data Scientist,117312,3.6,remote
+Data Scientist,117499.2,2.5,in-person
+Machine Learning Engineer,117499.2,4.1,in-person
+Machine Learning Engineer,117499.2,4.8,remote
+Business Analyst,118560,3.6,remote
+Data Analyst,119600,2.75,in-person
+Data Engineer,119600,3.4,remote
+Data Engineer,119600,3.5,in-person
+Business Analyst,119600,3.7,remote
+Data Analyst,119600,2.75,in-person
+Data Engineer,119600,3.7,remote
+Business Intelligence Developer,119620.8,3.6,in-person
+Business Intelligence Developer,119620.8,3.6,in-person
+Business Intelligence Developer,119620.8,3.6,in-person
+Data Engineer,119995.2,4.6,remote
+Business Intelligence Developer,119995.2,3.7,remote
+Data Scientist,120140.8,3.6,remote
+Data Scientist,120140.8,3.6,remote
+Database Administrator,122304,3.9,in-person
+Data Engineer,123198.4,3.7,remote
+Data Engineer,123198.4,3.7,remote
+Data Scientist,123240,4,in-person
+Business Analyst,124800,3.6,remote
+Data Engineer,124800,3.7,remote
+Business Intelligence Developer,124800,3.8,remote
+Data Engineer,124800,3.7,remote
+Data Engineer,125008,3.7,remote
+Data Scientist,125486.4,4.1,in-person
+Business Intelligence Developer,126401.6,4.3,in-person
+Data Scientist,127504,4.7,remote
+Data Engineer,127504,3.9,remote
+Business Analyst,127920,3.6,remote
+Data Scientist,129771.2,3.3,hybrid
+Business Intelligence Developer,129792,4.1,hybrid
+Data Engineer,129792,3.7,remote
+Data Scientist,129792,3.7,remote
+Business Intelligence Developer,129792,4.1,hybrid
+Business Analyst,129792,3.6,remote
+Data Scientist,129792,4.1,in-person
+Machine Learning Engineer,129792,3.7,remote
+Data Engineer,130000,3.7,remote
+Data Scientist,130000,3.9,in-person
+Data Engineer,130000,2.75,in-person
+Data Engineer,130000,3.7,remote
+Business Analyst,130000,3.8,in-person
+Business Intelligence Developer,130000,3.6,remote
+Business Analyst,130000,3.7,remote
+Business Analyst,130000,3.8,in-person
+Business Analyst,130000,3.4,remote
+Machine Learning Engineer,130000,2.5,remote
+Data Engineer,130000,3.7,hybrid
+Data Scientist,132496,4.2,in-person
+Business Analyst,133120,3.6,remote
+Data Scientist,134804.8,3.6,hybrid
+Machine Learning Engineer,134992,3.7,hybrid
+Machine Learning Engineer,134992,3.6,in-person
+Data Scientist,135012.8,3.6,remote
+Data Engineer,135200,3.7,remote
+Business Analyst,135200,2.75,in-person
+Data Engineer,135200,2.3,remote
+Data Engineer,136240,3.5,in-person
+Data Engineer,137280,4.3,remote
+Data Engineer,137363.2,3.7,in-person
+Data Engineer,137363.2,3.7,in-person
+Data Engineer,137384,3.7,remote
+Data Engineer,137384,3.7,remote
+Data Engineer,137384,3.7,remote
+Data Engineer,137696,3.9,remote
+Data Engineer,137696,3.7,remote
+Machine Learning Engineer,140004.8,2.5,remote
+Data Engineer,140004.8,4.2,remote
+Data Engineer,140400,4.1,in-person
+Business Analyst,140400,3.7,remote
+Business Analyst,140400,3.8,remote
+Data Engineer,140400,3.7,remote
+Business Analyst,140400,2.75,in-person
+Database Administrator,141731.2,4.3,in-person
+Database Administrator,141731.2,4.3,in-person
+Data Engineer,142500.8,2.75,remote
+Data Engineer,144622.4,4.2,remote
+Business Analyst,144996.8,3.7,in-person
+Data Engineer,144996.8,4.2,in-person
+Business Analyst,144996.8,3.7,in-person
+Business Analyst,146640,4.3,remote
+Data Engineer,147680,3.7,in-person
+Business Analyst,148720,3.4,remote
+Machine Learning Engineer,150009.6,4.9,in-person
+Data Scientist,150259.2,3.8,in-person
+Data Scientist,150259.2,3.8,in-person
+Machine Learning Engineer,150800,3.9,remote
+Data Engineer,150800,3.5,in-person
+Data Engineer,150800,3.5,in-person
+Data Engineer,150800,3.7,remote
+Data Engineer,150800,3.7,remote
+Data Engineer,150800,2.75,in-person
+Business Analyst,150800,3.6,remote
+Business Intelligence Developer,151840,3.5,remote
+Database Administrator,152880,4,in-person
+Machine Learning Engineer,152880,3.8,remote
+Machine Learning Engineer,152880,3.8,remote
+Machine Learning Engineer,154606.4,3.9,remote
+Machine Learning Engineer,155001.6,3.9,in-person
+Data Scientist,155001.6,3.9,in-person
+Data Scientist,155001.6,3.6,remote
+Machine Learning Engineer,155022.4,3.9,remote
+Machine Learning Engineer,155022.4,3.9,remote
+Data Engineer,155396.8,4.3,remote
+Database Administrator,156000,2.8,in-person
+Data Scientist,157996.8,3.4,remote
+Business Analyst,161200,4,remote
+Database Administrator,162489.6,3.5,remote
+Data Scientist,162489.6,3.6,remote
+Database Administrator,162489.6,3.5,remote
+Database Administrator,162489.6,3.5,remote
+Database Administrator,162489.6,3.5,remote
+Database Administrator,162489.6,3.5,remote
+Data Engineer,164320,3.7,remote
+Data Engineer,165006.4,4.3,in-person
+Data Engineer,165006.4,4.3,in-person
+Database Administrator,165360,3.7,in-person
+Data Engineer,166400,2.8,in-person
+Machine Learning Engineer,166400,4.9,remote
+Business Analyst,166400,3.6,remote
+Data Scientist,166400,3.6,remote
+Machine Learning Engineer,166400,4.9,remote
+Data Scientist,166400,3.6,remote
+Machine Learning Engineer,166400,4.5,remote
+Business Analyst,171600,3.8,in-person
+Data Scientist,173056,3.6,remote
+Data Engineer,173056,3.6,in-person
+Data Scientist,174990.4,4,in-person
+Data Scientist,174990.4,4,in-person
+Machine Learning Engineer,185556.8,3.9,in-person
+Data Engineer,187200,3.7,remote
+Data Scientist,190008,3.8,in-person
+Machine Learning Engineer,194105.6,4.2,remote
+Machine Learning Engineer,194105.6,4.2,remote
+Business Analyst,208000,3.6,remote
+Business Analyst,208000,3.6,remote
+Data Scientist,209497.6,4.1,in-person
+Data Scientist,215009.6,3.7,remote
+Machine Learning Engineer,287497.6,3.7,in-person
+Machine Learning Engineer,287497.6,3.7,in-person
