@@ -1,6 +1,6 @@
 // Set the dimensions and margins of the graph
 var margin = { top: 5, right: 50, bottom: 30, left: 110 },
-  width = window.innerWidth / 1.1 - margin.left - margin.right,
+  width = window.innerWidth / 1.1 - margin.left - 2 * margin.right,
   height = window.innerHeight / 1.3 - margin.top - margin.bottom;
 
 // Define colors
