@@ -46,24 +46,24 @@ var tooltipData = {
   },
   "Remote": {
     "Business Analyst": {
-      minSalary: 28800,
-      maxSalary: 168000
+      minSalary: 36400,
+      maxSalary: 208000
     },
     "Business Intelligence Developer": {
       minSalary: 79997,
-      maxSalary: 152880
+      maxSalary: 151840
     },
     "Data Analyst": {
       minSalary: 56160,
-      maxSalary: 135200
+      maxSalary: 162240
     },
     "Data Engineer": {
       minSalary: 41600,
-      maxSalary: 215010
+      maxSalary: 187200
     },
     "Data Scientist": {
       minSalary: 49920,
-      maxSalary: 187200
+      maxSalary: 215010
     },
     "Database Administrator": {
       minSalary: 62795,
@@ -77,19 +77,19 @@ var tooltipData = {
   "In-person": {
     "Business Analyst": {
       minSalary: 48506,
-      maxSalary: 130000
+      maxSalary: 171600
     },
     "Business Intelligence Developer": {
       minSalary: 57200,
-      maxSalary: 150259
+      maxSalary: 126401
     },
     "Data Analyst": {
       minSalary: 33280,
-      maxSalary: 94298
+      maxSalary: 134160
     },
     "Data Engineer": {
-      minSalary: 64500,
-      maxSalary: 174990
+      minSalary: 65000,
+      maxSalary: 173056
     },
     "Data Scientist": {
       minSalary: 36400,
@@ -97,7 +97,7 @@ var tooltipData = {
     },
     "Database Administrator": {
       minSalary: 50211,
-      maxSalary: 166400
+      maxSalary: 165360
     },
     "Machine Learning Engineer": {
       minSalary: 52000,
@@ -180,7 +180,8 @@ function updateViolinPlots(selectedFile, lowerlimit, upperlimit) {
       .attr("class", "myText")
       .attr("transform", "translate(-70," + height/2 + ") rotate(-90)")
       .style("text-anchor", "middle")
-      .text("Salary");
+      .text("Salary")
+      .style("font-weight", "bold");
 
 
     // Create histogram function
